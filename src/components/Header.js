@@ -5,7 +5,6 @@ import logo from '../logo.svg'
 const Header = () => {
   return (
     <Navbar expand="lg">
-      <div className="container">
         <Navbar.Brand href="#home">
           <img 
           src={ logo } 
@@ -20,7 +19,6 @@ const Header = () => {
             <Nav.Link href="#link">Link</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-      </div>
     </Navbar>
   )
 }

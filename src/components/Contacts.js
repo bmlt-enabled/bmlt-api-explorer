@@ -1,6 +1,7 @@
 import React from 'react'
 import {Form, Button } from 'react-bootstrap'
     const Contacts = ({ contacts }) => {
+      
       return (
         <div>
           <center><h1>Contact List</h1></center>
