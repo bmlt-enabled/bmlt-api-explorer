@@ -1,19 +1,16 @@
-import React from 'react'
-import {Form, Button} from 'react-bootstrap'
+import React from 'react';
 
-const Search = ({ inputRef, updateQuery }) => {
- 
+function Search(props) {
   
   return (
-    <Form>
-      <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Enter Root Server Url</Form.Label>
-        <Form.Control type="text" placeholder="bmlt.sezf.org/main_server" ref={inputRef} />
-      </Form.Group>
-      <Button variant="primary" onClick={updateQuery} >
-        Submit
-      </Button>
-    </Form>
+    <div>
+      <form action="submit" onSubmit={props.onSubmit}>
+      <div className="mb-3">
+        <input type='text'name='rootServer'/>
+        <button type='submit'>Search</button>
+      </div>
+      </form>
+    </div>
   )
 }
 

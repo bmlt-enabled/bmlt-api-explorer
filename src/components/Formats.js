@@ -11,7 +11,7 @@ class Formats extends Component {
         .then((data) => {
           this.setState({ formats: data })
         })
-        .catch(console.log)
+        .catch()
       }
 
       render() {

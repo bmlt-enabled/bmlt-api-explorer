@@ -1,18 +1,24 @@
-import React, { Component } from 'react'
-import Formats from './components/Formats'
-import Header from './components/Header'
+
+
+import React, {useState} from 'react'
+import Search from './components/Search'
 import './scss/App.scss'
 
-    class App extends Component {
-      
+function App() {
 
-      render() {
-        return (
-          <div className="container">
-            <Header />
-            <Formats />
-          </div>
-        )
-      }
-    }
-    export default App
+  const [rootServer, setRootServer] = useState(null)
+
+  function submitHandler(e) {
+    e.preventDefault();
+    setRootServer(e.currentTarget.rootServer.value)
+  }
+
+  return (
+    <div className="container">
+      <p>Root Server: {rootServer}</p>
+      <Search onSubmit={submitHandler} />
+    </div>
+  )
+}
+
+export default App
