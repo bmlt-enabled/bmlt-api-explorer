@@ -25,7 +25,9 @@ function App() {
           :
           <div className="card">No Root Server Selected</div>
         }
-      
+      {/* <div className="querystring">
+        <a href={rootServer} className="querystring-link">{rootServer}</a>
+      </div> */}
     </div>
   )
 }
