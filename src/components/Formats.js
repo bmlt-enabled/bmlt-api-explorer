@@ -46,7 +46,10 @@ function Formats(props) {
 
   // Get data from api
   const [formats, setFormats ] = useState([])
- 
+
+
+  
+  
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(FormatsApi)
@@ -60,11 +63,11 @@ function Formats(props) {
 
 
   return (
-    <div className="row">
+    <div className="row" id="includedFormats">
       {formats.map(format => (
         <div className="col-1 d-flex align-items-center justify-content-end" key={format.key_string}>
           <label className="mr-2 mb-0">{format.key_string}</label>
-          <input type="checkbox" name={format.key_string}/>
+          <input type="checkbox" value={format.id} onChange={props.onChange}/>
         </div>
       ))}
       

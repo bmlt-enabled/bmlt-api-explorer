@@ -13,15 +13,25 @@ function App() {
     e.preventDefault();
     setRootServer(e.currentTarget.rootServer.value)
   }
-  
   const cond = rootServer
+
+  var arr = []
+  function incFormatChange() {
+    arr = []
+    var checkboxID = document.getElementById('includedFormats')
+    var checkboxes = checkboxID.querySelectorAll('input[type="checkbox"]:checked');
+    for (var checkbox of checkboxes) {
+      arr.push(checkbox.value)
+        console.log(arr)
+    }
+  }
  
   return (
     <div className="container">
       <SearchHeader onSubmit={submitHandler} />
       <p>Root Server: {rootServer}</p>
       {cond !== '' ? 
-        <Formats serverUrl={rootServer}/>
+        <Formats serverUrl={rootServer} onChange={incFormatChange}/>
           :
           <div className="card">No Root Server Selected</div>
         }
