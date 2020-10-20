@@ -44,38 +44,27 @@ import axios from 'axios';
 function Formats(props) {
   const FormatsApi = 'https://' + props.serverUrl + '/client_interface/json/?switcher=GetFormats'
 
+  // Get data from api
   const [formats, setFormats ] = useState([])
-  const [checkedItems, setCheckedItems] = useState({});
-
-  const handleChange = (event) => {
-      // updating an object instead of a Map
-      setCheckedItems({ checkedItems, [event.target.name] : event.target.checked });
-
-      Object.keys(checkedItems).map((item, i) => (
-        console.log(checkedItems[item].value)
-      ))
-  }
-
-  const result = Object.values(checkedItems)
-  console.log(result)
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(FormatsApi)
       console.log(result.data)
       setFormats(result.data)
-
     }
-
     fetchData();
+
+
   }, []);
+
 
   return (
     <div className="row">
       {formats.map(format => (
         <div className="col-1 d-flex align-items-center justify-content-end" key={format.key_string}>
           <label className="mr-2 mb-0">{format.key_string}</label>
-          <input type="checkbox" name={format.key_string} onChange={handleChange} />
+          <input type="checkbox" name={format.key_string}/>
         </div>
       ))}
       
