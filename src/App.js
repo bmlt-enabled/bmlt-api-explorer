@@ -46,19 +46,29 @@ function App() {
   
  
   return (
-    <div className="container">
+    <div className="main-app">
       <SearchHeader onSubmit={submitHandler} />
-      <p>Root Server: {rootServer}</p>
-      {cond !== '' ? 
-        <div>
-        <IncludedFormats serverUrl={rootServer} onChange={handleIncFormats} />
-        <ExcludedFormats serverUrl={rootServer} onChange={handleIncFormats} />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">
+            <h2>Response</h2>
+          </div>
+          <div className="col-md-8">
+            <h2>Query Options</h2>
+            <p>Root Server: {rootServer}</p>
+            {cond !== '' ? 
+              <div>
+              <IncludedFormats serverUrl={rootServer} onChange={handleIncFormats} />
+              <ExcludedFormats serverUrl={rootServer} onChange={handleIncFormats} />
+              </div>
+                :
+              <div className="card">No Root Server Selected</div>
+            }
+            <div className="querystring">
+              <a href={`https://${rootServer}/client_interface/csv/?switcher=GetSearchResults${incFormats}`} className="querystring-link">{`https://${rootServer}/client_interface/csv/?switcher=GetSearchResults${incFormats}`}</a>
+            </div>
+          </div>
         </div>
-          :
-          <div className="card">No Root Server Selected</div>
-        }
-      <div className="querystring">
-        <a href={`https://${rootServer}/client_interface/csv/?switcher=GetSearchResults${incFormats}`} className="querystring-link">{`https://${rootServer}/client_interface/csv/?switcher=GetSearchResults${incFormats}`}</a>
       </div>
     </div>
   )
