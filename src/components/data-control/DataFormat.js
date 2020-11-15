@@ -1,14 +1,14 @@
 import React from 'react'
 
-function DataFormat() {
+function DataFormat(props) {
   return (
     <div>
       <div className="form-group">
-        <label for="returnedData">Returned Data Format</label>
-        <select className="form-control" id="returnedData">
-          <option default>CSV</option>
-          <option default>XML</option>
-          <option default>JSON</option>
+        <label>Returned Data Format</label>
+        <select className="form-control" id="returnedData" onChange={props.onChange}>
+          <option value="csv" default>CSV</option>
+          <option value="xml" >XML</option>
+          <option value="json" >JSON</option>
         </select>
       </div>
     </div>

@@ -9,12 +9,26 @@ import IncludedDayOfWeek from './components/search-options/IncludedDayOfWeek'
 import ExcludedDayOfWeek from './components/search-options/ExcludedDayOfWeek'
 import IncludedFormats from './components/search-options/IncludedFormats'
 import ExcludedFormats from './components/search-options/ExcludedFormats'
+import IncludedServiceBodies from './components/search-options/IncludedServiceBodies'
+import ExcludedServiceBodies from './components/search-options/ExcludedServiceBodies'
 import './scss/App.scss'
 
 function App() {
 
   const [rootServer, setRootServer] = useState('')
   const [queryResults, setqueryResults] = useState([]);
+  const [dataQuery, setDataQuery] = useState('GetSearchResults')
+  const [dataFormat, setDataFormat] = useState('csv')
+
+  function handleDataFormat(e) {
+    e.preventDefault();
+    setDataFormat(e.currentTarget.value)
+  }
+  
+  function handleDataQuery(e) {
+    e.preventDefault();
+    setDataQuery(e.currentTarget.value)
+  }
 
   function submitHandler(e) {
     e.preventDefault();
@@ -22,7 +36,7 @@ function App() {
   }
   const cond = rootServer
 
-  function handlequeryResults(e) {
+  function handleQueryResults(e) {
     if (e.currentTarget.checked) {
       setqueryResults([...queryResults, e.target.value]);
     } else {
@@ -54,33 +68,37 @@ function App() {
     <div className="main-app">
       <SearchHeader onSubmit={submitHandler} />
       <div className="container">
+      {cond !== '' ? 
         <div className="row">
           <div className="col-md-4">
             <h2>Response</h2>
             <div>
               <Response />
-              <DataFormat />
-              <DataQuery />
+              <DataFormat onChange={handleDataFormat}/>
+              <DataQuery onChange={handleDataQuery}/>
             </div>
           </div>
           <div className="col-md-8">
             <h2>Search Options</h2>
             <p>Root Server: {rootServer}</p>
-            {cond !== '' ? 
+            
             <div>
-            <IncludedDayOfWeek onChange={handlequeryResults}/>
-            <ExcludedDayOfWeek onChange={handlequeryResults}/>
-            <IncludedFormats serverUrl={rootServer} onChange={handlequeryResults} />
-            <ExcludedFormats serverUrl={rootServer} onChange={handlequeryResults} />
-            </div>
-              :
-            <div className="card">No Root Server Selected</div>
-            }
-            <div className="querystring">
-              <a href={`https://${rootServer}/client_interface/csv/?switcher=GetSearchResults${queryResults}`} className="querystring-link">{`https://${rootServer}/client_interface/csv/?switcher=GetSearchResults${queryResults}`}</a>
+              <IncludedDayOfWeek onChange={handleQueryResults}/>
+              <ExcludedDayOfWeek onChange={handleQueryResults}/>
+              <IncludedFormats serverUrl={rootServer} onChange={handleQueryResults} />
+              <ExcludedFormats serverUrl={rootServer} onChange={handleQueryResults} />
+              <IncludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
+              <ExcludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
             </div>
           </div>
+          <div className="querystring">
+            <a href={`https://${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`} className="querystring-link" target="_blank" rel='noreferrer noopener'>{`https://${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`}</a>
+          </div>
         </div>
+        
+        :
+            <div className="card h2 text-center my-5 py-4 bg-primary text-white">No Root Server Selected</div>
+            }
       </div>
     </div>
   )

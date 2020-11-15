@@ -5,3 +5,18 @@ h1 {
 h2 {
   @extend .py-3, .text-primary;
 }
+
+body {
+  position: relative;
+  margin-bottom: $spacer*4;
+}
+
+.querystring {
+  @extend .bg-white, .py-3, .text-center;
+
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+}
