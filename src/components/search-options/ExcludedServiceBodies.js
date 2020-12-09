@@ -24,9 +24,9 @@ function ExcludedServiceBodies(props) {
       <h2>Excluded Service Bodies</h2>
       <div className="row" id="excludedServiceBodies">
         {serviceBody.map(body => (
-          <div className="w-100" key={body.id}>
+          <div className="col-12 mb-2" key={body.id}>
             <input  data-layout={body.type} type="checkbox" value={`&services[]=-${body.id}`} onChange={props.onChange}/>
-            <label className="ml-2 mb-0">{body.name}</label>
+            <label className="ml-3 mb-0">{body.name}</label>
             
             
           </div>
