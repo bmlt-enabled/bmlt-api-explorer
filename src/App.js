@@ -11,6 +11,7 @@ import IncludedFormats from './components/search-options/IncludedFormats'
 import ExcludedFormats from './components/search-options/ExcludedFormats'
 import IncludedServiceBodies from './components/search-options/IncludedServiceBodies'
 import ExcludedServiceBodies from './components/search-options/ExcludedServiceBodies'
+import TextSearch from './components/search-options/TextSearch'
 import './scss/App.scss'
 
 function App() {
@@ -44,24 +45,6 @@ function App() {
       setqueryResults(newArr);
     }
   }
-  // useEffect(() => {
-  //   console.log(queryResults)
-  // }, [queryResults]);
-
-  // let queryResultstr = ''
-  // let incFormatArr = []
-  // function incFormatChange() {
-  //   incFormatArr = []
-  //   var checkboxID = document.getElementById('includedFormats')
-  //   var checkboxes = checkboxID.querySelectorAll('input[type="checkbox"]:checked');
-  //   for (var checkbox of checkboxes) {
-  //     incFormatArr.push(checkbox.value)
-  //       console.log(incFormatArr)   
-  //   }
-  //   let paramString = incFormatArr.join('&formats=');
-  //   queryResultstr = rootServer + '&formats=' + paramString;
-  //   setqueryResults(queryResultstr)
-  // }
   
  
   return (
@@ -89,6 +72,7 @@ function App() {
               <ExcludedFormats serverUrl={rootServer} onChange={handleQueryResults} />
               <IncludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
               <ExcludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
+              <TextSearch />
             </div>
           </div>
           <div className="querystring">

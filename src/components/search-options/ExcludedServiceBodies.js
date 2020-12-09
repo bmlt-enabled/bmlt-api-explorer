@@ -21,7 +21,7 @@ function ExcludedServiceBodies(props) {
 
   return (
     <section>
-      <h2>Included Service Bodies</h2>
+      <h2>Excluded Service Bodies</h2>
       <div className="row" id="excludedServiceBodies">
         {serviceBody.map(body => (
           <div className="w-100" key={body.id}>

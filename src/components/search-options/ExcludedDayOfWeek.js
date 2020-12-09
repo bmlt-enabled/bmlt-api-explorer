@@ -4,7 +4,7 @@ function ExcludedDayOfWeek(props) {
 
   return (
     <section>
-      <h2>Included Days Of Week</h2>
+      <h2>Excluded Days Of Week</h2>
       <div className="row" id="ExcludedDayOfWeek">
           <div className="col d-flex flex-column align-items-center justify-content-center" key="monday">
             <label className="mr-2 mb-0">Sunday</label>
