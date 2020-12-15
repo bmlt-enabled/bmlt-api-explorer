@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
-import axios from 'axios';
+import jsonpAdapter from 'axios-jsonp';
 import ReactTooltip from 'react-tooltip'
+import axios from 'axios'
 
 function ExcludedFormats(props) {
   const FormatsApi = 'https://' + props.serverUrl + '/client_interface/json/?switcher=GetFormats'
@@ -10,14 +11,19 @@ function ExcludedFormats(props) {
   
 
 
+
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(FormatsApi)
+      const result = await axios({
+        url: FormatsApi,
+        adapter: jsonpAdapter,
+        callbackParamName: "jsonCallback"
+      });
       console.log(result.data)
       setFormats(result.data)
     }
     fetchData();
-  }, [FormatsApi]);
+  },[FormatsApi]);
 
   return (
     <section>

@@ -11,7 +11,7 @@ import IncludedFormats from './components/search-options/IncludedFormats'
 import ExcludedFormats from './components/search-options/ExcludedFormats'
 import IncludedServiceBodies from './components/search-options/IncludedServiceBodies'
 import ExcludedServiceBodies from './components/search-options/ExcludedServiceBodies'
-import TextSearch from './components/search-options/TextSearch'
+// import TextSearch from './components/search-options/TextSearch'
 import './scss/App.scss'
 
 function App() {
@@ -72,7 +72,7 @@ function App() {
               <ExcludedFormats serverUrl={rootServer} onChange={handleQueryResults} />
               <IncludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
               <ExcludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
-              <TextSearch />
+              {/* <TextSearch /> */}
             </div>
           </div>
           <div className="querystring">
