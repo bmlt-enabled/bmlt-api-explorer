@@ -1,11 +1,5 @@
 import React, { useState, useEffect} from 'react'
-// import jsonpAdapter from 'axios-jsonp';
 import ReactTooltip from 'react-tooltip'
-// import fetchJsonp from 'fetch-jsonp'
-// import axios from 'axios'
-// import jsonp from 'axios-jsonp-pro'
-
-// var fetchJsonp = require("fetch-jsonp")
 
 function ExcludedFormats(props) {
   const FormatsApi = 'https://' + props.serverUrl + '/client_interface/jsonp/?switcher=GetFormats'
@@ -70,62 +64,6 @@ function ExcludedFormats(props) {
     fetchData();
   },[FormatsApi]);
 
-  // function callback(data) {
-  //   var dataFromServer = data;
-  //   console.log(dataFromServer);
-  //   }
-
-  // var script = document.createElement('script');
-  // script.src = FormatsApi + '&callback=?';
-  // document.querySelector('head').appendChild(script);
-
-  // console.log(script);
-
-  // Get data from api
-  
-  
-  
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //       const response = await fetchJsonp(FormatsApi, {
-  //         jsonpCallbackFunction: 'callback'
-  //       })
-  //       .then(function(response) {
-  //         return response.json()
-  //       }).then(function(json) {
-  //         console.log('parsed json', json)
-  //       })
-  //       console.log(response.data);
-  //       // return setFormats(result.data);
-  //   }
-  //   fetchData();
-  // },[FormatsApi]);
-
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //       await axios({
-  //           url: FormatsApi,
-  //           adapter: jsonpAdapter
-  //       }).then((result) => {
-  //           console.log(result.data);
-  //           return setFormats(result.data);
-  //       });
-  //   }
-  //   fetchData();
-  // },[FormatsApi]);
-
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //         axios.jsonp(FormatsApi)
-  //         .then(function (response) {
-  //           console.log(response);
-  //           return setFormats(response.data);
-  //         })
-  //     }
-  //     fetchData();
-  //   },[FormatsApi]);
-  
   return (
     <section>
       <h2>Excluded Formats</h2>
