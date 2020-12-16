@@ -1,4 +1,6 @@
 import React, { useState, useEffect} from 'react'
+import axios from 'axios'
+import jsonpAdapter from 'axios-jsonp'
 
 function IncludedServiceBodies(props) {
   const ServiceBodyApi = 'https://' + props.serverUrl + '/client_interface/jsonp/?switcher=GetServiceBodies'
@@ -9,53 +11,12 @@ function IncludedServiceBodies(props) {
   useEffect(() => {
     const fetchData = async () => {
 
-      // Set JS for jsonp callback
-      let jsonpID = 0;
-
-      function jsonp(url, timeout = 7500) {
-        const head = document.querySelector('head');
-
-        // set unique identifier for function
-        jsonpID = Math.round(Math.random() * 1000000000);
-
-        return new Promise((resolve, reject) => {
-          let script = document.createElement('script');
-          const callbackName = `jsonpCallback${jsonpID}`;
-          script.src = encodeURI(`${url}&callback=${callbackName}`);
-          script.async = true;
-
-          const timeoutId = window.setTimeout(() => {
-            cleanUp();
-            return reject(new Error('Timeout'));
-          }, timeout);
-
-          window[callbackName] = data => {
-            cleanUp();
-            return resolve(data);
-          };
-
-          script.addEventListener('error', error => {
-            cleanUp();
-            return reject(error);
-          });
-
-          // Define cleanup function
-          function cleanUp() {
-            window[callbackName] = undefined;
-            head.removeChild(script);
-            window.clearTimeout(timeoutId);
-            script = null;
-          }
-          // append script inside <head>
-          head.appendChild(script);
-        });
-      }
-      
-      jsonp(
-        ServiceBodyApi
-      )
-      .then(setServiceBody)
-      .catch(console.error);
+      await axios({
+        url: ServiceBodyApi,
+        adapter: jsonpAdapter
+      }).then((res) => {
+        setServiceBody(res.data)
+      })
     }
     fetchData();
   },[ServiceBodyApi]);
