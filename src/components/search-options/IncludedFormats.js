@@ -1,20 +1,62 @@
 import React, { useState, useEffect} from 'react'
-import axios from 'axios'
 import ReactTooltip from 'react-tooltip'
 
 function IncludedFormats(props) {
-  const FormatsApi = 'https://' + props.serverUrl + '/client_interface/json/?switcher=GetFormats'
+  const FormatsApi = 'https://' + props.serverUrl + '/client_interface/jsonp/?switcher=GetFormats'
 
   // Get data from api
   const [formats, setFormats ] = useState([])
-  
-
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(FormatsApi)
-      console.log(result.data)
-      setFormats(result.data)
+
+      // Set JS for jsonp callback
+      let jsonpID = 0;
+
+      function jsonp(url, timeout = 7500) {
+        const head = document.querySelector('head');
+
+        // set unique identifier for function
+        jsonpID = Math.round(Math.random() * 1000000000);
+
+        return new Promise((resolve, reject) => {
+          let script = document.createElement('script');
+          const callbackName = `jsonpCallback${jsonpID}`;
+          script.src = encodeURI(`${url}&callback=${callbackName}`);
+          script.async = true;
+
+          const timeoutId = window.setTimeout(() => {
+            cleanUp();
+            return reject(new Error('Timeout'));
+          }, timeout);
+
+          window[callbackName] = data => {
+            cleanUp();
+            return resolve(data);
+          };
+
+          script.addEventListener('error', error => {
+            cleanUp();
+            return reject(error);
+          });
+
+          // Define cleanup function
+          function cleanUp() {
+            window[callbackName] = undefined;
+            head.removeChild(script);
+            window.clearTimeout(timeoutId);
+            script = null;
+          }
+          // append script inside <head>
+          head.appendChild(script);
+        });
+      }
+      
+      jsonp(
+        FormatsApi
+      )
+      .then(setFormats)
+      .catch(console.error);
     }
     fetchData();
   },[FormatsApi]);
