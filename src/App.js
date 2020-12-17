@@ -1,10 +1,11 @@
-
-
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import jsonpAdapter from 'axios-jsonp'
 import SearchHeader from './components/SearchHeader'
 import Response from './components/data-control/DataResponse'
 import DataFormat from './components/data-control/DataFormat'
 import DataQuery from './components/data-control/DataQuery'
+// import ServerVersion from './components/ServerVersion'
 import IncludedDayOfWeek from './components/search-options/IncludedDayOfWeek'
 import ExcludedDayOfWeek from './components/search-options/ExcludedDayOfWeek'
 import IncludedFormats from './components/search-options/IncludedFormats'
@@ -16,10 +17,36 @@ import './scss/App.scss'
 
 function App() {
 
+  
+
   const [rootServer, setRootServer] = useState('')
   const [queryResults, setqueryResults] = useState([]);
   const [dataQuery, setDataQuery] = useState('GetSearchResults')
   const [dataFormat, setDataFormat] = useState('csv')
+  const [serverInfo, setServerInfo] = useState([])
+  const [connection, setConnection] = useState('')
+
+  //get server info
+  const ServerInfoApi = 'https://' + rootServer + '/client_interface/jsonp/?switcher=GetServerInfo'
+
+  // Get data from api
+  useEffect(() => {
+    const fetchData = async () => {
+
+      await axios({
+        url: ServerInfoApi,
+        adapter: jsonpAdapter
+      }).then((res) => {
+        setServerInfo(res.data)
+        setConnection('Connection Successful')
+      }).catch((error) => {
+        setConnection('Connection Failed')
+      })
+    }
+    fetchData();
+
+  },[ServerInfoApi]);
+  // end get server info
 
   function handleDataFormat(e) {
     e.preventDefault();
@@ -35,7 +62,6 @@ function App() {
     e.preventDefault();
     setRootServer(e.currentTarget.rootServer.value)
   }
-  const cond = rootServer
 
   function handleQueryResults(e) {
     if (e.currentTarget.checked) {
@@ -45,7 +71,9 @@ function App() {
       setqueryResults(newArr);
     }
   }
-  
+
+  const cond = rootServer
+  const query = dataQuery
  
   return (
     <div className="main-app">
@@ -62,27 +90,64 @@ function App() {
             </div>
           </div>
           <div className="col-md-8">
-            <h2>Search Options</h2>
-            <p>Root Server: {rootServer}</p>
-            
-            <div>
-              <IncludedDayOfWeek onChange={handleQueryResults}/>
-              <ExcludedDayOfWeek onChange={handleQueryResults}/>
-              <IncludedFormats serverUrl={rootServer} onChange={handleQueryResults} />
-              <ExcludedFormats serverUrl={rootServer} onChange={handleQueryResults} />
-              <IncludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
-              <ExcludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
-              {/* <TextSearch /> */}
+          <section>
+            <div id="server-info">
+            {
+              {
+                'Connection Failed': <p className="font-weight-bold">{connection}</p>
+              }[connection] ||
+              <div>
+              {serverInfo.map(info => (
+                <p className="text-primary" key="server-version">Server Version: ({info.version})<span className="font-weight-bold ml-3">{connection}</span></p>
+                ))}
+              </div>
+            }
             </div>
+          </section>
+            {
+              {
+                'Connection Successful': 
+                <div>
+            {
+              {
+                'GetSearchResults': <div>
+                  <h2>Search Options</h2>
+                  <IncludedDayOfWeek onChange={handleQueryResults}/>
+                  <ExcludedDayOfWeek onChange={handleQueryResults}/>
+                  <IncludedFormats serverUrl={rootServer} onChange={handleQueryResults} />
+                  <ExcludedFormats serverUrl={rootServer} onChange={handleQueryResults} />
+                  <IncludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
+                  <ExcludedServiceBodies serverUrl={rootServer} onChange={handleQueryResults} />
+                  {/* <TextSearch /> */}
+                  </div>
+              }[query] ||
+              <div>
+                There are no options available for this search query
+              </div>
+            }
+            </div>
+              }[connection] ||
+              <div>
+                <h3>Please Check URL</h3>
+              </div>
+            }
+              
           </div>
           <div className="querystring">
-            <a href={`https://${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`} className="querystring-link" target="_blank" rel='noreferrer noopener'>{`https://${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`}</a>
+            {
+              {
+                'GetSearchResults': <a href={`https://${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`} className="querystring-link" target="_blank" rel='noreferrer noopener'>{`https://${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`}</a>
+
+              }[query] ||
+              <a href={`https://${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}`} className="querystring-link" target="_blank" rel='noreferrer noopener'>{`https://${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}`}</a>
+              
+            }
           </div>
         </div>
         
         :
-            <div className="card h2 text-center my-5 py-4 bg-primary text-white">No Root Server Selected</div>
-            }
+        <div className="card h2 text-center my-5 py-4 bg-primary text-white">No Root Server Selected</div>
+        }
       </div>
     </div>
   )
