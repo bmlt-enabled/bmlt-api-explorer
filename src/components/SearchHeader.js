@@ -11,7 +11,7 @@ function SearchHeader(props) {
             <img className="w-100" src={logo} alt="bmlt api explorer logo"/>
           </figure>
           <form className="form-inline" action="submit" onSubmit={props.onSubmit}>
-            <input className="form-control" type='text'name='rootServer'/>
+            <input className="form-control" type='text'name='rootServer' placeholder="ctna.org/main_server"/>
             <button className="btn btn-outline-white" type='submit'>Search</button>
           </form>
         </div>
