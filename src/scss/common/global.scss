@@ -6,9 +6,17 @@ h2 {
   @extend .py-3, .text-primary;
 }
 
+h3 {
+  @extend .mb-0;
+}
+
 body {
   position: relative;
   margin-bottom: $spacer*5;
+}
+
+.interface-selectors {
+  @extend .my-3;
 }
 
 .querystring {
