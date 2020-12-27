@@ -4,15 +4,15 @@ The **BMLT API Explorer** is a stand alone replacement for the current **Semanti
 #### Steps To Build Locally
 
 Using Yarn:
-
-> yarn
-> yarn start
-
+```
+yarn
+yarn start
+```
 Using NPM
-
-> npm install
-> npm start
-
+```
+npm install
+npm start
+```
 
 #### Current URL
 [https://bmlt-enabled.github.io/bmlt-api-explorer](https://bmlt-enabled.github.io/bmlt-api-explorer)
