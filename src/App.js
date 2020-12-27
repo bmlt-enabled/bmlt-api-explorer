@@ -9,7 +9,7 @@ import ExcludedDayOfWeek from './components/search-options/ExcludedDayOfWeek'
 import IncludedFormats from './components/search-options/IncludedFormats'
 import ExcludedFormats from './components/search-options/ExcludedFormats'
 import IncludedServiceBodies from './components/search-options/IncludedServiceBodies'
-import ExcludedServiceBodies from './components/search-options/ExcludedServiceBodies'
+import ExcludedServiceBodies from './components/service-bodies/ExcludedServiceBodies'
 // import TextSearch from './components/search-options/TextSearch'
 import './scss/App.scss'
 
@@ -78,7 +78,7 @@ function App() {
             <div className="querystring">
             {
               {
-                'GetSearchResults': <a href={`${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`} className="querystring-link" target="_blank" rel='noreferrer noopener'>{`${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`}</a>
+                'GetSearchResults': <a href={`${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}${queryResults}`} className="querystring-link" target="_blank" rel='noreferrer noopener'>{`${queryResults}`}</a>
 
               }[query] ||
               <a href={`${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}`} className="querystring-link" target="_blank" rel='noreferrer noopener'>{`${rootServer}/client_interface/${dataFormat}/?switcher=${dataQuery}`}</a>

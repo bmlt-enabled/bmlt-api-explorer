@@ -16,7 +16,6 @@ function IncludedServiceBodies(props) {
         adapter: jsonpAdapter
       }).then((res) => {
         setServiceBody(res.data)
-        console.log(res.data)
       })
     }
     fetchData();
