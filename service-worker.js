@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bmlt-api-explorer/precache-manifest.267da7b597a4fef12925aa85c59cd87b.js"
+  "/bmlt-api-explorer/precache-manifest.14329a1b6b50696e46f3505332c02a67.js"
 );
 
 self.addEventListener('message', (event) => {
