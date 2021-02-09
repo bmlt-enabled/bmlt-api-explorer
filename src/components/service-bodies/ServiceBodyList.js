@@ -29,6 +29,7 @@ class ListItem extends React.Component {
       checked: [],
       expanded: [],
   };
+  
 
   render() {
       return (
@@ -55,9 +56,9 @@ class ListItem extends React.Component {
 }
 
 
-console.log(root)
+
   return (
-    <ListItem onChange={props.onChange}/>
+    <ListItem onChange={this.state.checked}/>
   )
 }
 

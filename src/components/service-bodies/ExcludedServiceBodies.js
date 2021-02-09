@@ -11,6 +11,9 @@ function ExcludedServiceBodies(props) {
   // Get data from api
   const [serviceBody, setServiceBody ] = useState([])
 
+  function handleOnChange(e) {
+    console.log(props)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +81,7 @@ function ExcludedServiceBodies(props) {
 
   return (
     <section>
-      <ServiceBodyList serviceArray={renamed} />
+      <ServiceBodyList serviceArray={renamed} onChange={this.props} />
       {/* <div className="card-header">
         <h3>Excluded Service Bodies</h3>
       </div>
