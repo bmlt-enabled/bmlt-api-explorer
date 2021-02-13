@@ -81,7 +81,7 @@ function ExcludedServiceBodies(props) {
 
   return (
     <section>
-      <ServiceBodyList serviceArray={renamed} onChange={this.props} />
+      <ServiceBodyList serviceArray={renamed} handleOnChange={handleOnChange}/>
       {/* <div className="card-header">
         <h3>Excluded Service Bodies</h3>
       </div>

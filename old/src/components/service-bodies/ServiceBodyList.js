@@ -8,10 +8,10 @@ function ServiceBodyList(props) {
 
   const serviceBody = props.serviceArray
 
-// Create root for top-level node(s)
-const root = [];
-serviceBody.forEach(node => {
-  
+  // Create root for top-level node(s)
+  const root = [];
+  serviceBody.forEach(node => {
+    
   // No parent_id means top level
   if (node.parent_id === '0')
   return root.push(node);
@@ -24,14 +24,16 @@ serviceBody.forEach(node => {
   serviceBody[parentIndex].children.push(node);
 });
 
-class ListItem extends React.Component {
-  state = {
-      checked: [],
-      expanded: [],
-  };
+// class ListItem extends React.Component {
+//   state = {
+//       checked: [],
+//       expanded: [],
+//   };
   
 
-  render() {
+//   render() {
+
+
       return (
           <CheckboxTree
               nodes={root}
@@ -52,13 +54,11 @@ class ListItem extends React.Component {
             }}
           />
       );
+    }
   }
-}
-
-
-
   return (
-    <ListItem onChange={this.state.checked}/>
+    
+    <ListItem />
   )
 }
 
