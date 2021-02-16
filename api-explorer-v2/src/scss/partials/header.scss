@@ -1,4 +1,10 @@
+header.banner {
+  @extend .bg-primary;
 
-h2 {
-  font-size: 32px;
+  padding-top: $spacer;
+  padding-bottom: $spacer;
+
+  nav.navbar {
+    @extend .p-0;
+  }
 }

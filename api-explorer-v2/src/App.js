@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-// import {Tomato} from './api/switchers'
+import React from 'react'
 import './scss/App.scss'
 import Layout from './layout/Layout'
 
-import {TomatoProvider} from './context/Tomato'
+import {TomatoProvider} from './context/GlobalContext'
 
 
 function App() {

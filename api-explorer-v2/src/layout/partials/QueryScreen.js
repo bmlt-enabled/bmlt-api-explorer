@@ -1,10 +1,12 @@
 import React from 'react'
+import Formats from '../../components/formats/Formats'
+import { QueryProvider } from '../../context/QueryContext'
 
 function QueryScreen() {
   return (
-    <div>
-      Main Screen
-    </div>
+    <QueryProvider>
+      <Formats/>
+    </QueryProvider>
   )
 }
 

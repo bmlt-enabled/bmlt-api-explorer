@@ -1,18 +1,18 @@
 import React, {createContext, useReducer} from 'react'
-import AppReducer from './AppReducer'
+import GlobalReducer from './GlobalReducer'
 
 const initialState = {
     isLoading: true,
-    root_server_url: null,
+    root_server_url: window.location.href,
     tomato: null,
 }
 
 
 // create context
-export const TomatoContext = createContext(initialState);
+export const Globalcontext = createContext(initialState);
 
 export const TomatoProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [state, dispatch] = useReducer(GlobalReducer, initialState);
 
   //Actions
   function updateRootServerURL(payload) {
@@ -35,10 +35,9 @@ export const TomatoProvider = ({ children }) => {
       payload: payload,
     })
   }
-  console.log(state)
 
   return(
-    <TomatoContext.Provider value={{
+    <Globalcontext.Provider value={{
       isLoading: state.isLoading,
       root_server_url: state.root_server_url,
       tomato: state.tomato,
@@ -47,6 +46,6 @@ export const TomatoProvider = ({ children }) => {
       setTomato
     }}>
       {children}
-    </TomatoContext.Provider>
+    </Globalcontext.Provider>
   )
 }

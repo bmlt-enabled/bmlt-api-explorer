@@ -1,3 +1,4 @@
-export const Formats = '/client_interface/jsonp/?switcher=GetFormats';
-export const Bodies = '/client_interface/jsonp/?switcher=GetServiceBodies';
-export const Tomato = 'https://tomato.bmltenabled.org/rest/v1/rootservers/';
+export const formatsAPI = '/client_interface/jsonp/?switcher=GetFormats';
+export const bodiesAPI = '/client_interface/jsonp/?switcher=GetServiceBodies';
+export const tomatoAPI = 'https://tomato.bmltenabled.org/rest/v1/rootservers/';
+export const detailsAPI = '/client_interface/jsonp/?switcher=GetServerInfo';

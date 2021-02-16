@@ -2,24 +2,22 @@ import React, {useState, useEffect, useContext} from 'react'
 import Header from './partials/Header'
 import Sidebar from './partials/Sidebar'
 import QueryScreen from './partials/QueryScreen'
-import ServerSelect from '../components/ServerSelect'
-import {TomatoContext} from '../context/Tomato'
-import {Tomato} from '../api/switchers'
+import ServerSelect from '../components/server-select/ServerSelect'
+import {Globalcontext} from '../context/GlobalContext'
+import {tomatoAPI} from '../api/switchers'
 import axios from 'axios'
 
 
 function Layout(props) {
 
-  const {currentRootServerURL, isLoading, setTomato} = useContext(TomatoContext)
+  const {currentRootServerURL, isLoading, setTomato, root_server_url} = useContext(Globalcontext)
 
   const [tomatoQuery, setTomatoQuery] = useState([]);
   const [matched, setMatched] = useState(false);
 
-  const currentURL = window.location.hostname;
-
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(Tomato)
+      const result = await axios(tomatoAPI)
       setTomatoQuery(result.data)
       setTomato(result.data);
     }
@@ -27,18 +25,19 @@ function Layout(props) {
 
     // match current url to tomato url query
     tomatoQuery.forEach(i => {
-      if (i.root_server_url === currentURL) {
+      if (i.root_server_url === root_server_url) {
         setMatched(true)
       } 
     })
+
     setTimeout(() => {
-      currentRootServerURL(currentURL);
+      currentRootServerURL(root_server_url);
     }, 1000);
     
+    console.log(root_server_url)
     
-  }, [])
-
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[root_server_url])
 
   // Display loading component while loading
   if (isLoading === true) {
