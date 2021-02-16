@@ -1,0 +1,19 @@
+$theme-colors: (
+  primary:        #0f60ad,
+  secondary:      #4ac272,
+  black:          #000,
+);
+
+$spacer: 1rem;
+$font-size-base: $spacer;
+$font-family-base: 'Lato';
+$headings-font-family: 'poppins';
+
+$enable-responsive-font-sizes: true;
+
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.5;
+$h4-font-size: $font-size-base * 1.25;
+$h5-font-size: $font-size-base * 1;
+$h6-font-size: $font-size-base;
