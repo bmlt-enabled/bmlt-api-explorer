@@ -11,6 +11,7 @@ const initialState = {
     isMatched: false,
     serverDetails: null,
     formats: null,
+    serviceBodies: null,
 }
 
 
@@ -49,6 +50,20 @@ export const TomatoProvider = ({ children }) => {
     }).then((res) => {
       dispatch({
         type: 'GET_FORMATS',
+        payload: res.data,
+      })
+    });
+  }
+
+  //Service Bodies API
+  function getServiceBodies(payload) {
+    axios({
+      url: payload,
+      adapter: jsonpAdapter
+    }).then((res) => {
+      console.log(res.data)
+      dispatch({
+        type: 'GET_SERVICE_BODIES',
         payload: res.data,
       })
     });
@@ -99,11 +114,13 @@ export const TomatoProvider = ({ children }) => {
       serverDetails: state.serverDetails,
       isMatched: state.isMatched,
       formats: state.formats,
+      serviceBodies: state.serviceBodies,
       updateRootServerURL,
       setLoading,
       getServerDetails,
       getFormats,
-      setTomato
+      setTomato,
+      getServiceBodies,
     }}>
       {children}
     </Globalcontext.Provider>

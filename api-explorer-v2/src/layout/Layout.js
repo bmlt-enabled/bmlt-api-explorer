@@ -1,11 +1,8 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useContext} from 'react'
 import Header from './partials/Header'
 import Sidebar from './partials/Sidebar'
 import QueryScreen from './partials/QueryScreen'
-import ServerSelect from '../components/server-select/ServerSelect'
 import {Globalcontext} from '../context/GlobalContext'
-import {tomatoAPI} from '../api/switchers'
-import axios from 'axios'
 
 
 function Layout(props) {

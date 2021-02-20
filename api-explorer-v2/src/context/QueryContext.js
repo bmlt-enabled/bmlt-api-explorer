@@ -69,7 +69,7 @@ export const QueryProvider = ({ children }) => {
       payload: payload,
     });
   }
-console.log(state.includedDays)
+  
   return(
     <Querycontext.Provider value={{
       excludedFormats: state.excludedFormats,

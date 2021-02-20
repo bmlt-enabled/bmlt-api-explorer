@@ -28,6 +28,11 @@ export default (state, action) => {
         ...state,
         formats: action.payload,
       }
+    case 'GET_SERVICE_BODIES':
+      return {
+        ...state,
+        serviceBodies: action.payload,
+      }
     case 'SET_MATCHED':
       return {
         ...state,
