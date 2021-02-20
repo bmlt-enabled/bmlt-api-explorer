@@ -4,14 +4,34 @@ export default (state, action) => {
     case 'SET_TOMATO':
       return {
         ...state,
+        isLoading: false,
         tomato: action.payload,
       }
-      case 'CURRENT_URL':
-        case 'UPDATE_URL':
+    case 'SET_LOADING':
+      return {
+        ...state,
+        isLoading: action.payload,
+      }
+    case 'UPDATE_URL':
       return {
         ...state,
         root_server_url: action.payload,
-        isLoading: false,
+        isMatched: true,
+      }
+    case 'GET_SERVER_DETAILS':
+      return {
+        ...state,
+        serverDetails: action.payload,
+      }
+    case 'GET_FORMATS':
+      return {
+        ...state,
+        formats: action.payload,
+      }
+    case 'SET_MATCHED':
+      return {
+        ...state,
+        isMatched: true,
       }
     default:
       return state;

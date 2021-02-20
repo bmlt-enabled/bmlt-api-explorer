@@ -1,20 +1,27 @@
-import React from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './scss/App.scss'
 import Layout from './layout/Layout'
-
-import {TomatoProvider} from './context/GlobalContext'
+import {Globalcontext} from './context/GlobalContext'
+// import Header from './layout/partials/Header'
 
 
 function App() {
+  const {setTomato, isLoading} = useContext(Globalcontext)
+  
+  useEffect(() => {
+    setTomato(false);
+  },[]);
 
   return (
-    <div className="App">
-      <TomatoProvider>
-      <Layout>
-        This is the main layout
-      </Layout>
-      </TomatoProvider>
-    </div>
+    <>
+    {isLoading === true? 
+      <div className="container">Page Loading</div>
+      :
+      <div className="App">
+        <Layout />
+      </div>
+    }
+   </>
   );
 }
 

@@ -1,5 +1,7 @@
 import React, {createContext, useReducer} from 'react'
 import QueryReducer from './QueryReducer'
+import axios from 'axios'
+import jsonpAdapter from 'axios-jsonp'
 
 const initialState = {
     formats: null,
@@ -12,12 +14,8 @@ export const QueryProvider = ({ children }) => {
   const [state, dispatch] = useReducer(QueryReducer, initialState);
 
   //Actions
-  function formatsFunction(payload) {
-    console.log(payload)
-    dispatch({
-      type: 'GET_FORMATS',
-      payload: payload,
-    });
+  function formatsFunction() {
+   console.log('why is querycontext firing?')
   }
 
   return(

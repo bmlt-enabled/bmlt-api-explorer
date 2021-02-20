@@ -1,11 +1,11 @@
 import React from 'react'
-import Formats from '../../components/formats/Formats'
+import ExcludedFormats from '../../components/formats/ExcludedFormats'
 import { QueryProvider } from '../../context/QueryContext'
 
 function QueryScreen() {
   return (
     <QueryProvider>
-      <Formats/>
+      <ExcludedFormats/>
     </QueryProvider>
   )
 }

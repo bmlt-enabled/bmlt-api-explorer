@@ -24,18 +24,16 @@ function ServiceBodyList(props) {
   serviceBody[parentIndex].children.push(node);
 });
 
-// class ListItem extends React.Component {
-//   state = {
-//       checked: [],
-//       expanded: [],
-//   };
-  
+class ListItem extends React.Component {
+  state = {
+    checked: [],
+    expanded: [],
+  };
 
-//   render() {
-
-
+  render() {
       return (
           <CheckboxTree
+              onChange={changeMe}
               nodes={root}
               checked={this.state.checked}
               expanded={this.state.expanded}

@@ -10,49 +10,49 @@ import axios from 'axios'
 
 function Layout(props) {
 
-  const {currentRootServerURL, isLoading, setTomato, root_server_url} = useContext(Globalcontext)
+  const {isMatched} = useContext(Globalcontext)
 
-  const [tomatoQuery, setTomatoQuery] = useState([]);
-  const [matched, setMatched] = useState(false);
+  // const [tomatoQuery, setTomatoQuery] = useState([]);
+  // const [matched, setMatched] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(tomatoAPI)
-      setTomatoQuery(result.data)
-      setTomato(result.data);
-    }
-    fetchData();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios(tomatoAPI)
+  //     setTomatoQuery(result.data)
+  //     setTomato(result.data);
+  //   }
+  //   fetchData();
 
-    // match current url to tomato url query
-    tomatoQuery.forEach(i => {
-      if (i.root_server_url === root_server_url) {
-        setMatched(true)
-      } 
-    })
+  //   // match current url to tomato url query
+  //   tomatoQuery.forEach(i => {
+  //     if (i.root_server_url === root_server_url) {
+  //       setMatched(true)
+  //     } 
+  //   })
 
-    setTimeout(() => {
-      currentRootServerURL(root_server_url);
-    }, 1000);
+  //   setTimeout(() => {
+  //     currentRootServerURL(root_server_url);
+  //   }, 1000);
     
-    console.log(root_server_url)
+  //   console.log(root_server_url)
     
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[root_server_url])
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // },[root_server_url])
 
   // Display loading component while loading
-  if (isLoading === true) {
-    return (
-      <div>
-        Page Is Loading
-      </div>
-    )
-  } else {
+  // if (isLoading === true) {
+  //   return (
+  //     // <div>
+  //     //   Page Is Loading
+  //     // </div>
+  //   )
+  // } else {
     return (
       <>
         <Header />
         <div className="container">
-          {matched === false ?
-          <ServerSelect/>
+          {isMatched === false ?
+          <h2 className="text-center">Please Select A Root Server</h2>
           : 
           <div className="row">
           <div className="col-md-4">
@@ -68,6 +68,6 @@ function Layout(props) {
       </>
     )
   }
-}
+// }
 
 export default Layout

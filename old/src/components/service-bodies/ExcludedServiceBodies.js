@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import jsonpAdapter from 'axios-jsonp'
-import ServiceBodyList from './ServiceBodyList'
+// import ServiceBodyList from './ServiceBodyList'
 
 function ExcludedServiceBodies(props) {
 
@@ -29,33 +29,34 @@ function ExcludedServiceBodies(props) {
   },[ServiceBodyApi]);
 
   
-  const renamed = serviceBody.map(item => {
-    return { id: item.id, label: item.name, value: item.id, parent_id: item.parent_id, type: item.type };
-  });
+  // const renamed = serviceBody.map(item => {
+  //   return { id: item.id, label: item.name, value: item.id, parent_id: item.parent_id, type: item.type };
+  // });
 
-  console.log(renamed)
-// const servicearray = []
+  // console.log(renamed)
+const servicearray = []
 
-// serviceBody.map(body => (
-// servicearray.push(body.parent_id)
-// ))
-/////////////
+serviceBody.map(body => (
+servicearray.push(body.parent_id)
+))
+///////////
 // Create root for top-level node(s)
-// const root = [];
-// serviceBody.forEach(node => {
-//   // No parent_id means top level
-//   if (node.parent_id === '0')
-//   return root.push(node);
+const root = [];
+serviceBody.forEach(node => {
+  // No parent_id means top level
+  if (node.parent_id === '0')
+  return root.push(node);
 
-//   // Insert node as child of parent in serviceBody array
-//   const parentIndex = serviceBody.findIndex(el => el.id === node.parent_id);
-//   if (!serviceBody[parentIndex].children) {
-//     return serviceBody[parentIndex].children = [node];
-//   } 
-//   serviceBody[parentIndex].children.push(node);
-// });
+  // Insert node as child of parent in serviceBody array
+  const parentIndex = serviceBody.findIndex(el => el.id === node.parent_id);
+  if (!serviceBody[parentIndex].children) {
+    return serviceBody[parentIndex].children = [node];
+  } 
+  serviceBody[parentIndex].children.push(node);
+});
 
-// console.log(root)
+console.log(root)
+console.log(root.name)
 
 
 
@@ -77,20 +78,25 @@ function ExcludedServiceBodies(props) {
 //     </div>
 //   )
 // }
-
+// if (!root || !root.length) {
+//   return null
+// }
 
   return (
     <section>
-      <ServiceBodyList serviceArray={renamed} handleOnChange={handleOnChange}/>
-      {/* <div className="card-header">
+      </section>
+  )
+      
+      {/* <ServiceBodyList serviceArray={renamed} handleOnChange={handleOnChange}/>
+      <div className="card-header">
         <h3>Excluded Service Bodies</h3>
       </div>
       <div className="card-body">
-        <div className="row" id="excludedServiceBodies"> */}
+        <div className="" id="excludedServiceBodies">
         
-          {/* {root.map(p => (
+          {root.map(p => (
             <div>
-            <div className="col-12 mb-2" key={p.id}>
+            <div className="my-4" key={p.id}>
             <input type="checkbox" />
             <label>{p.name}</label>
             </div>
@@ -102,19 +108,17 @@ function ExcludedServiceBodies(props) {
               </div>
             ))}
             </div>
-          ))} */}
-          {/* {serviceBody.map(body => (
+          ))}
+          {serviceBody.map(body => (
             <div className="col-12 mb-2" key={body.id}>
               <input  data-layout={body.type} type="checkbox" value={`&services[]=-${body.id}`} onChange={props.onChange}/>
               <label className="ml-3 mb-0">{body.name}</label>
             </div>
-          ))} */}
-        {/* </div>
-      </div>
-      <div className="filter">
+          ))}
+        </div>
       </div> */}
-    </section>
-  )
+    {/* </section>
+  ) */}
 }
 
 export default ExcludedServiceBodies

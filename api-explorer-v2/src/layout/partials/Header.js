@@ -1,4 +1,5 @@
 import React from 'react'
+import ServerSelect from '../../components/server-select/ServerSelect';
 import logo from '../../logo.svg';
 
 function Header() {
@@ -9,6 +10,7 @@ function Header() {
         <figure className="navbar-brand mb-0">
           <img className="w-100" src={logo} alt="bmlt api explorer logo"/>
         </figure>
+        <ServerSelect />
       </nav>
     </div>
   </header>

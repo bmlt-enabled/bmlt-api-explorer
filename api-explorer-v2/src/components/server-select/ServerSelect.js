@@ -1,13 +1,22 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {Globalcontext} from '../../context/GlobalContext'
 import ServerDetails from './ServerDetails'
+import {detailsAPI, formatsAPI} from '../../api/switchers'
 
 function ServerSelect() {
 
-  const {tomato, updateRootServerURL} = useContext(Globalcontext)
+  const {tomato, updateRootServerURL, setLoading, getServerDetails, getFormats} = useContext(Globalcontext)
+
+  // const [serverName, setServerName] = useState()
 
   function selectRootServer(e) {
-    updateRootServerURL(e.target.value)
+    setLoading(true);
+    updateRootServerURL(e.target.value);
+    getServerDetails(e.target.value + detailsAPI);
+    getFormats(e.target.value + formatsAPI);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }
   
 
@@ -21,7 +30,7 @@ function ServerSelect() {
           ))}
         </select>
       </div>
-      <ServerDetails tomato={tomato}/>
+      <ServerDetails/>
     </div>
   )
 }

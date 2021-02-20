@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {TomatoProvider} from './context/GlobalContext'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <>
+  <TomatoProvider>
     <App />
+  </TomatoProvider>
+    
   </>,
   document.getElementById('root')
 );
