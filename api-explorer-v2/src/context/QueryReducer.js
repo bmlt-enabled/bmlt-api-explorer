@@ -1,10 +1,25 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default (state, action) => {
   switch(action.type) {
-    case 'GET_FORMATS':
+    case 'SET_EXCLUDED_FORMATS':
       return {
         ...state,
-        formats: action.payload,
+        excludedFormats: action.payload,
+      }
+    case 'SET_INCLUDED_FORMATS':
+      return {
+        ...state,
+        includedFormats: action.payload,
+      }
+    case 'SET_EXCLUDED_DAYS':
+      return {
+        ...state,
+        excludedDays: action.payload,
+      }
+    case 'SET_INCLUDED_DAYS':
+      return {
+        ...state,
+        includedDays: action.payload,
       }
       // case 'CURRENT_URL':
       //   case 'UPDATE_URL':

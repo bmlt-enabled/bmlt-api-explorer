@@ -4,7 +4,10 @@ import axios from 'axios'
 import jsonpAdapter from 'axios-jsonp'
 
 const initialState = {
-    formats: null,
+    excludedFormats: [],
+    includedFormats: [],
+    includedDays: [],
+    excludedDays: [],
 }
 
 // create context
@@ -14,14 +17,69 @@ export const QueryProvider = ({ children }) => {
   const [state, dispatch] = useReducer(QueryReducer, initialState);
 
   //Actions
-  function formatsFunction() {
-   console.log('why is querycontext firing?')
+
+  //excluded Format 
+  function excludedFormatsFunction(payload) {
+      // if (payload.length > 1 ) {
+      //  payload = payload.map(i => 'formats[]=' + i);
+      // } else {
+      //   payload = payload.map(i => 'formats=' + i);
+      // }
+    dispatch({
+      type: 'SET_EXCLUDED_FORMATS',
+      payload: payload,
+    });
   }
 
+  //Included Format
+  function includedFormatsFunction(payload) {
+    // if (payload.length > 1 ) {
+    //  payload = payload.map(i => 'formats[]=' + i);
+    // } else {
+    //   payload = payload.map(i => 'formats=' + i);
+    // }
+    dispatch({
+      type: 'SET_INCLUDED_FORMATS',
+      payload: payload,
+    });
+  }
+
+  //Excluded Days
+  function excludedDaysFunction(payload) {
+    // if (payload.length > 1 ) {
+    //  payload = payload.map(i => 'formats[]=' + i);
+    // } else {
+    //   payload = payload.map(i => 'formats=' + i);
+    // }
+    dispatch({
+      type: 'SET_EXCLUDED_DAYS',
+      payload: payload,
+    });
+  }
+
+  // Included Days
+  function includedDaysFunction(payload) {
+    // if (payload.length > 1 ) {
+    //  payload = payload.map(i => 'formats[]=' + i);
+    // } else {
+    //   payload = payload.map(i => 'formats=' + i);
+    // }
+    dispatch({
+      type: 'SET_INCLUDED_DAYS',
+      payload: payload,
+    });
+  }
+console.log(state.includedDays)
   return(
     <Querycontext.Provider value={{
-      formats: state.formats,
-      formatsFunction
+      excludedFormats: state.excludedFormats,
+      includedFormats: state.includedFormats,
+      excludedDays: state.excludedDays,
+      includedDays: state.includedDays,
+      excludedFormatsFunction,
+      includedFormatsFunction,
+      excludedDaysFunction,
+      includedDaysFunction,
     }}>
       {children}
     </Querycontext.Provider>

@@ -3,9 +3,9 @@ import ReactTooltip from 'react-tooltip'
 import {Globalcontext} from '../../context/GlobalContext'
 import {Querycontext} from '../../context/QueryContext'
 
-function ExcludedFormats() {
+function IncludedFormats() {
   const {formats} = useContext(Globalcontext)
-  const {excludedFormatsFunction} = useContext(Querycontext)
+  const {includedFormatsFunction} = useContext(Querycontext)
   const [selectedFormats, setSelectedFormats] = useState([])
   
   function checkedFormats(e) {
@@ -17,22 +17,22 @@ function ExcludedFormats() {
     }
   }
 
-  // pass excluded formats array to reducer every time it is changed
+  // pass included formats array to reducer every time it is changed
   useEffect(() => {
-    excludedFormatsFunction(selectedFormats)
+    includedFormatsFunction(selectedFormats)
   },[selectedFormats]);
 
   
   return (
     <section className="card interface-selectors">
       <div className="card-header">
-        <h3>Excluded Formats</h3>
+        <h3>Included Formats</h3>
       </div>
       <div className="card-body">
-        <div className="row" id="ExcludedFormats">
+        <div className="row" id="IncludedFormats">
           {formats.map(format => (
             <div className="col-4 col-md-2 d-flex align-items-center mb-2" key={format.key_string}>
-            <input  type="checkbox" value={`-${format.id}`} onChange={checkedFormats}/>
+            <input  type="checkbox" value={format.id} onChange={checkedFormats}/>
             <ReactTooltip place="top" type="info" effect="solid" delayShow={700} id={`formats-label-${format.id}`}>
               <span>{format.name_string}</span>
             </ReactTooltip>
@@ -44,5 +44,5 @@ function ExcludedFormats() {
     </section>
   )
 }
-//value={`&formats=${format.id}`}
-export default ExcludedFormats
+
+export default IncludedFormats
