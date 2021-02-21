@@ -4,7 +4,7 @@ function DataResponse() {
   return (
     <div>
       <div className="form-group">
-        <label>Response Request</label>
+        <h5>Response Request</h5>
         <select className="form-control" id="responseSelect">
           <option default>Direct Response URL</option>
         </select>

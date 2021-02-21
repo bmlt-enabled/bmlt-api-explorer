@@ -4,7 +4,7 @@ function DataQuery(props) {
   return (
     <div>
       <div className="form-group">
-        <label>Get Results From</label>
+        <h5>Get Results From</h5>
         <select className="form-control" id="dataQueryResults" onChange={props.onChange}>
           <option value="GetSearchResults" default>Meeting Search Results</option>
           <option value="GetFormats">Get Formats</option>
