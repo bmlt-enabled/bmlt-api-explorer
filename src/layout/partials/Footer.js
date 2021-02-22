@@ -46,9 +46,12 @@ function Footer() {
   // console.log(queryArr.join('&'))
   
   return (
-    <div className="container">
+    <div className="container footer-container">
       {root_server_url !== null ?
-      <p>{`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}`}</p>
+      <>
+      <h5 className="query-heading text-center">Your Query:</h5> 
+      <a className="query-string" href={`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}`}>{`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}`}</a>
+      </>
       :
       <p>No Query Available</p>
     }
