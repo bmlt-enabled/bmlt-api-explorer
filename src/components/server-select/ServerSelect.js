@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import {Globalcontext} from '../../context/GlobalContext'
 import ServerDetails from './ServerDetails'
 import {detailsAPI, formatsAPI, bodiesAPI} from '../../api/switchers'
@@ -17,7 +17,7 @@ function ServerSelect() {
     getServiceBodies(e.target.value + bodiesAPI);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1500);
   }
   
 

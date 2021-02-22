@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext} from 'react'
+import {Querycontext} from '../../context/QueryContext'
 
 function DataFormat() {
-  const [dataFormat, setDataFormat] = useState('csv')
+  const {dataFormatFunction} = useContext(Querycontext)
 
   function selectDataFormat(e) {
-    setDataFormat(e.target.value)
+    dataFormatFunction(e.target.value)
   }
 
-  console.log(dataFormat)
   return (
     <div className="form-group my-3">
       <h5>Returned Data Format</h5>

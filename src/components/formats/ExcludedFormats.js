@@ -20,10 +20,12 @@ function ExcludedFormats() {
   // pass excluded formats array to reducer every time it is changed
   useEffect(() => {
     excludedFormatsFunction(selectedFormats)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[selectedFormats]);
 
   
   return (
+    
     <section className="card interface-selectors">
       <div className="card-header">
         <h3>Excluded Formats</h3>

@@ -31,6 +31,16 @@ export default (state, action) => {
         ...state,
         includedBodies: action.payload,
       }
+    case 'SET_DATA_FORMAT':
+      return {
+        ...state,
+        dataFormat: action.payload,
+      }
+    case 'SET_DATA_QUERY':
+      return {
+        ...state,
+        dataQuery: action.payload,
+      }
       // case 'CURRENT_URL':
       //   case 'UPDATE_URL':
       // return {

@@ -1,7 +1,5 @@
 import React, {createContext, useReducer} from 'react'
 import QueryReducer from './QueryReducer'
-import axios from 'axios'
-import jsonpAdapter from 'axios-jsonp'
 
 const initialState = {
     excludedFormats: [],
@@ -10,6 +8,8 @@ const initialState = {
     excludedDays: [],
     includedBodies: [],
     excludedBodies: [],
+    dataFormat: 'csv',
+    dataQuery: '?switcher=GetSearchResults',
 }
 
 // create context
@@ -22,11 +22,6 @@ export const QueryProvider = ({ children }) => {
 
   //excluded Format 
   function excludedFormatsFunction(payload) {
-      // if (payload.length > 1 ) {
-      //  payload = payload.map(i => 'formats[]=' + i);
-      // } else {
-      //   payload = payload.map(i => 'formats=' + i);
-      // }
     dispatch({
       type: 'SET_EXCLUDED_FORMATS',
       payload: payload,
@@ -35,11 +30,6 @@ export const QueryProvider = ({ children }) => {
 
   //Included Format
   function includedFormatsFunction(payload) {
-    // if (payload.length > 1 ) {
-    //  payload = payload.map(i => 'formats[]=' + i);
-    // } else {
-    //   payload = payload.map(i => 'formats=' + i);
-    // }
     dispatch({
       type: 'SET_INCLUDED_FORMATS',
       payload: payload,
@@ -48,11 +38,6 @@ export const QueryProvider = ({ children }) => {
 
   //Excluded Days
   function excludedDaysFunction(payload) {
-    // if (payload.length > 1 ) {
-    //  payload = payload.map(i => 'formats[]=' + i);
-    // } else {
-    //   payload = payload.map(i => 'formats=' + i);
-    // }
     dispatch({
       type: 'SET_EXCLUDED_DAYS',
       payload: payload,
@@ -61,11 +46,6 @@ export const QueryProvider = ({ children }) => {
 
   // Included Days
   function includedDaysFunction(payload) {
-    // if (payload.length > 1 ) {
-    //  payload = payload.map(i => 'formats[]=' + i);
-    // } else {
-    //   payload = payload.map(i => 'formats=' + i);
-    // }
     dispatch({
       type: 'SET_INCLUDED_DAYS',
       payload: payload,
@@ -74,11 +54,6 @@ export const QueryProvider = ({ children }) => {
 
   // Included Service Bodies
   function includedBodiesFunction(payload) {
-    // if (payload.length > 1 ) {
-    //  payload = payload.map(i => 'formats[]=' + i);
-    // } else {
-    //   payload = payload.map(i => 'formats=' + i);
-    // }
     dispatch({
       type: 'SET_INCLUDED_BODIES',
       payload: payload,
@@ -87,18 +62,27 @@ export const QueryProvider = ({ children }) => {
 
   // Excluded Bodies
   function excludedBodiesFunction(payload) {
-    // if (payload.length > 1 ) {
-    //  payload = payload.map(i => 'formats[]=' + i);
-    // } else {
-    //   payload = payload.map(i => 'formats=' + i);
-    // }
     dispatch({
       type: 'SET_EXCLUDED_BODIES',
       payload: payload,
     });
   }
 
-  console.log(state)
+  // Data Format
+  function dataFormatFunction(payload) {
+    dispatch({
+      type: 'SET_DATA_FORMAT',
+      payload: payload,
+    })
+  }
+
+  // Data Query
+  function dataQueryFunction(payload) {
+    dispatch({
+      type: 'SET_DATA_QUERY',
+      payload: payload,
+    })
+  }
   
   return(
     <Querycontext.Provider value={{
@@ -108,12 +92,16 @@ export const QueryProvider = ({ children }) => {
       includedDays: state.includedDays,
       excludedBodies: state.excludedBodies,
       includedBodies: state.includedBodies,
+      dataFormat: state.dataFormat,
+      dataQuery: state.dataQuery,
       excludedFormatsFunction,
       includedFormatsFunction,
       excludedDaysFunction,
       includedDaysFunction,
       excludedBodiesFunction,
       includedBodiesFunction,
+      dataFormatFunction,
+      dataQueryFunction,
     }}>
       {children}
     </Querycontext.Provider>
