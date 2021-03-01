@@ -36,6 +36,11 @@ export default (state, action) => {
         ...state,
         dataFormat: action.payload,
       }
+    case 'SET_HTML_SIMPLE':
+      return {
+        ...state,
+        htmlSimple: action.payload,
+      }
     case 'SET_DATA_QUERY':
       return {
         ...state,
@@ -46,7 +51,7 @@ export default (state, action) => {
         ...state,
         formatComparison: action.payload,
       }
-      
+
       // case 'CURRENT_URL':
       //   case 'UPDATE_URL':
       // return {

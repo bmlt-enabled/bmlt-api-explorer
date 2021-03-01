@@ -38,12 +38,10 @@ function IncludedFormats() {
       </div>
       <div className="card-body">
         <div className="row" id="IncludedFormats">
+
           {formats.map(format => (
-            <div className="col-4 col-md-2 d-flex align-items-center mb-2" key={format.id}>
+            <div className="col-4 col-md-2 d-flex align-items-center mb-2 form-check" key={format.id}>
             <input id={`format-${format.id}`} type="checkbox" value={format.id} onChange={checkedFormats}/>
-            {/* <ReactTooltip place="top" type="info" effect="solid" delayShow={700} id={`formats-label-${format.id}`}>
-              <span>{format.name_string}</span>
-            </ReactTooltip> */}
             <label className="ml-3 mb-0" htmlFor={`format-${format.id}`}>{format.key_string}</label>
           </div>
           ))}

@@ -11,6 +11,7 @@ const initialState = {
     dataFormat: 'csv',
     dataQuery: '?switcher=GetSearchResults',
     formatComparison: '',
+    htmlSimple: '',
 }
 
 // create context
@@ -77,6 +78,14 @@ export const QueryProvider = ({ children }) => {
     })
   }
 
+  // Data Format HTML SIMPLE
+  function htmlSimpleFunction(payload) {
+    dispatch({
+      type: 'SET_HTML_SIMPLE',
+      payload: payload,
+    })
+  }
+
   // Data Query
   function dataQueryFunction(payload) {
     dispatch({
@@ -101,9 +110,9 @@ export const QueryProvider = ({ children }) => {
       excludedBodies: state.excludedBodies,
       includedBodies: state.includedBodies,
       dataFormat: state.dataFormat,
+      htmlSimple: state.htmlSimple,
       dataQuery: state.dataQuery,
       formatComparison: state.formatComparison,
-      setFormatComparison,
       excludedFormatsFunction,
       includedFormatsFunction,
       excludedDaysFunction,
@@ -111,7 +120,9 @@ export const QueryProvider = ({ children }) => {
       excludedBodiesFunction,
       includedBodiesFunction,
       dataFormatFunction,
+      htmlSimpleFunction,
       dataQueryFunction,
+      setFormatComparison,
     }}>
       {children}
     </Querycontext.Provider>

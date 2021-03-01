@@ -14,6 +14,7 @@ function Footer() {
     dataFormat,
     dataQuery,
     formatComparison,
+    htmlSimple,
   } = useContext(Querycontext);
 
   const {root_server_url} = useContext(Globalcontext);
@@ -44,7 +45,7 @@ function Footer() {
   
   //Set Final Query Arrya
   let joinArr = [...bodiesArr, ...daysArr, ...formatsArr].join('');
-  let queryArr = joinArr + formatComparison;
+  let queryArr = joinArr + formatComparison + htmlSimple;
   // console.log(queryArr.join('&'))
   
   return (
