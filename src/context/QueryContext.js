@@ -10,6 +10,7 @@ const initialState = {
     excludedBodies: [],
     dataFormat: 'csv',
     dataQuery: '?switcher=GetSearchResults',
+    formatComparison: '',
 }
 
 // create context
@@ -83,7 +84,14 @@ export const QueryProvider = ({ children }) => {
       payload: payload,
     })
   }
-  
+
+  // Format Comparison Operator
+  function setFormatComparison(payload) {
+    dispatch({
+      type: 'SET_FORMAT_COMPARISON',
+      payload: payload,
+    })
+  }
   return(
     <Querycontext.Provider value={{
       excludedFormats: state.excludedFormats,
@@ -94,6 +102,8 @@ export const QueryProvider = ({ children }) => {
       includedBodies: state.includedBodies,
       dataFormat: state.dataFormat,
       dataQuery: state.dataQuery,
+      formatComparison: state.formatComparison,
+      setFormatComparison,
       excludedFormatsFunction,
       includedFormatsFunction,
       excludedDaysFunction,

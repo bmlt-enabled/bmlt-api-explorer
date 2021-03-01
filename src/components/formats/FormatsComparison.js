@@ -2,28 +2,24 @@ import React, {useContext, useEffect, useState} from 'react'
 import {Querycontext} from '../../context/QueryContext'
 
 function FormatsComparison(props) {
+//disabled true/false passed from included formats
 
-  const {includedFormats} = useContext(Querycontext);
-  const [disabeld, setDisabled] = useState(true);
 
-  // console.log(includedFormats.length)
+  const {setFormatComparison} = useContext(Querycontext);
 
-  // useEffect(() => {
-  //   if (includedFormats.length > 0) {
-  //     setDisabled(false);
-  //   } else {
-  //     setDisabled(true);
-  //   }
-  // }, [includedFormats])
+  function setComparison(e) {
+    if (e.target.checked) {
+      setFormatComparison(e.target.value)
+    } else {
+      setFormatComparison('')
+    }
+  }
 
   return (
     <div className="formats-operator">
       <div className="form-check form-check-inline">
-        <input className="form-check-input" type="radio" id="huey" name="drone" disabled={props.disabled} checked={props.disabled} />
-        <label className="form-check-label">AND</label>
-      
-        <input className="form-check-input" type="radio" id="louie" name="drone" disabled={props.disabled} value="option2"/>
-        <label className="form-check-label">OR</label>
+        <input className="form-check-input" type="checkbox" id="or-comparison" disabled={props.disabled} value="&formats_comparison_operator=OR" onChange={setComparison}/>
+        <label className="form-check-label" htmlFor="or-comparison">Use OR Comparison Operator</label>
       </div>
     </div>
   )

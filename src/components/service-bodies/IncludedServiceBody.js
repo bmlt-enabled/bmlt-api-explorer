@@ -17,6 +17,7 @@ function IncludedServiceBody() {
 
   useEffect(() => {
     includedBodiesFunction(checked);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked])
   
   function CheckTree() {

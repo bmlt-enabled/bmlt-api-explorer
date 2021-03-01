@@ -41,6 +41,12 @@ export default (state, action) => {
         ...state,
         dataQuery: action.payload,
       }
+    case 'SET_FORMAT_COMPARISON':
+      return {
+        ...state,
+        formatComparison: action.payload,
+      }
+      
       // case 'CURRENT_URL':
       //   case 'UPDATE_URL':
       // return {

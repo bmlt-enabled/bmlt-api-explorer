@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import {Querycontext} from '../../context/QueryContext'
 import {Globalcontext} from '../../context/GlobalContext'
+
 function Footer() {
 
   const {
@@ -11,7 +12,8 @@ function Footer() {
     includedBodies,
     excludedBodies,
     dataFormat,
-    dataQuery
+    dataQuery,
+    formatComparison,
   } = useContext(Querycontext);
 
   const {root_server_url} = useContext(Globalcontext);
@@ -41,8 +43,8 @@ function Footer() {
   }
   
   //Set Final Query Arrya
-  let queryArr = [...bodiesArr, ...daysArr, ...formatsArr].join('');
-
+  let joinArr = [...bodiesArr, ...daysArr, ...formatsArr].join('');
+  let queryArr = joinArr + formatComparison;
   // console.log(queryArr.join('&'))
   
   return (

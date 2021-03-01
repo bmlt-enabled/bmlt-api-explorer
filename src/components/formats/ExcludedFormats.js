@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext} from 'react'
-import ReactTooltip from 'react-tooltip'
+// import ReactTooltip from 'react-tooltip'
 import {Globalcontext} from '../../context/GlobalContext'
 import {Querycontext} from '../../context/QueryContext'
 
@@ -34,11 +34,11 @@ function ExcludedFormats() {
         <div className="row" id="ExcludedFormats">
           {formats.map(format => (
             <div className="col-4 col-md-2 d-flex align-items-center mb-2" key={format.id}>
-            <input  type="checkbox" value={`-${format.id}`} onChange={checkedFormats}/>
+            <input id={`format-${format.id}`} type="checkbox" value={`-${format.id}`} onChange={checkedFormats}/>
             {/* <ReactTooltip place="top" type="info" effect="solid" delayShow={700} id={`formats-label-${format.id}`}>
               <span>{format.name_string}</span>
             </ReactTooltip> */}
-            <label className="ml-3 mb-0" data-tip data-for={`formats-label-${format.id}`}>{format.key_string}</label>
+            <label className="ml-3 mb-0" htmlFor={`format-${format.id}`}>{format.key_string}</label>
           </div>
           ))}
         </div>
