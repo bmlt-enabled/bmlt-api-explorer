@@ -33,11 +33,11 @@ function ExcludedFormats() {
       <div className="card-body">
         <div className="row" id="ExcludedFormats">
           {formats.map(format => (
-            <div className="col-4 col-md-2 d-flex align-items-center mb-2" key={format.key_string}>
+            <div className="col-4 col-md-2 d-flex align-items-center mb-2" key={format.id}>
             <input  type="checkbox" value={`-${format.id}`} onChange={checkedFormats}/>
-            <ReactTooltip place="top" type="info" effect="solid" delayShow={700} id={`formats-label-${format.id}`}>
+            {/* <ReactTooltip place="top" type="info" effect="solid" delayShow={700} id={`formats-label-${format.id}`}>
               <span>{format.name_string}</span>
-            </ReactTooltip>
+            </ReactTooltip> */}
             <label className="ml-3 mb-0" data-tip data-for={`formats-label-${format.id}`}>{format.key_string}</label>
           </div>
           ))}
@@ -46,5 +46,5 @@ function ExcludedFormats() {
     </section>
   )
 }
-//value={`&formats=${format.id}`}
+
 export default ExcludedFormats

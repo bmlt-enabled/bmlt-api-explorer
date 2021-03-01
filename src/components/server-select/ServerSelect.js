@@ -1,23 +1,24 @@
 import React, {useContext} from 'react'
 import {Globalcontext} from '../../context/GlobalContext'
 import ServerDetails from './ServerDetails'
-import {detailsAPI, formatsAPI, bodiesAPI} from '../../api/switchers'
 
 function ServerSelect() {
 
-  const {tomato, updateRootServerURL, setLoading, getServerDetails, getFormats, getServiceBodies} = useContext(Globalcontext)
+  // const {tomato, updateRootServerURL, setLoading, getServerDetails, getFormats, getServiceBodies} = useContext(Globalcontext)
+  const {tomato, getStuff} = useContext(Globalcontext)
+
 
   // const [serverName, setServerName] = useState()
 
   function selectRootServer(e) {
-    setLoading(true);
-    updateRootServerURL(e.target.value);
-    getServerDetails(e.target.value + detailsAPI);
-    getFormats(e.target.value + formatsAPI);
-    getServiceBodies(e.target.value + bodiesAPI);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
+    // updateRootServerURL(e.target.value);
+    getStuff(e.target.value);
+    // getServerDetails(e.target.value + detailsAPI);
+    // getFormats(e.target.value + formatsAPI);
+    // getServiceBodies(e.target.value + bodiesAPI);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 1500);
   }
   
 
@@ -29,6 +30,7 @@ function ServerSelect() {
           {tomato.map(info => (
             <option key={info.source_id} value={info.root_server_url}>{info.name}</option>
           ))}
+          <option key="tomato" value="https://tomato.bmltenabled.org/main_server">Tomato</option>
         </select>
       </div>
       <ServerDetails/>

@@ -1,16 +1,29 @@
-import React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
+import {Querycontext} from '../../context/QueryContext'
 
-function FormatsComparison() {
+function FormatsComparison(props) {
+
+  const {includedFormats} = useContext(Querycontext);
+  const [disabeld, setDisabled] = useState(true);
+
+  // console.log(includedFormats.length)
+
+  // useEffect(() => {
+  //   if (includedFormats.length > 0) {
+  //     setDisabled(false);
+  //   } else {
+  //     setDisabled(true);
+  //   }
+  // }, [includedFormats])
 
   return (
     <div className="formats-operator">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-        <label class="form-check-label" for="inlineRadio1">1</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-        <label class="form-check-label" for="inlineRadio2">2</label>
+      <div className="form-check form-check-inline">
+        <input className="form-check-input" type="radio" id="huey" name="drone" disabled={props.disabled} checked={props.disabled} />
+        <label className="form-check-label">AND</label>
+      
+        <input className="form-check-input" type="radio" id="louie" name="drone" disabled={props.disabled} value="option2"/>
+        <label className="form-check-label">OR</label>
       </div>
     </div>
   )

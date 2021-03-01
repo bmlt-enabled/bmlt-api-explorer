@@ -53,7 +53,8 @@ function Footer() {
       <a className="query-string" href={`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}`}>{`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}`}</a>
       </>
       :
-      <p>No Query Available</p>
+      <>
+      </>
     }
       
     </div>
