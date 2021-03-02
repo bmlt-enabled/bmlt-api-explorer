@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/bmlt-api-explorer/static/css/main.ce63fbf1.chunk.css",
-    "main.js": "/bmlt-api-explorer/static/js/main.df88001f.chunk.js",
-    "main.js.map": "/bmlt-api-explorer/static/js/main.df88001f.chunk.js.map",
-    "runtime-main.js": "/bmlt-api-explorer/static/js/runtime-main.486603e2.js",
-    "runtime-main.js.map": "/bmlt-api-explorer/static/js/runtime-main.486603e2.js.map",
-    "static/js/2.2bc65bff.chunk.js": "/bmlt-api-explorer/static/js/2.2bc65bff.chunk.js",
-    "static/js/2.2bc65bff.chunk.js.map": "/bmlt-api-explorer/static/js/2.2bc65bff.chunk.js.map",
-    "static/js/3.e2c1b04a.chunk.js": "/bmlt-api-explorer/static/js/3.e2c1b04a.chunk.js",
-    "static/js/3.e2c1b04a.chunk.js.map": "/bmlt-api-explorer/static/js/3.e2c1b04a.chunk.js.map",
-    "index.html": "/bmlt-api-explorer/index.html",
-    "static/css/main.ce63fbf1.chunk.css.map": "/bmlt-api-explorer/static/css/main.ce63fbf1.chunk.css.map",
-    "static/js/2.2bc65bff.chunk.js.LICENSE.txt": "/bmlt-api-explorer/static/js/2.2bc65bff.chunk.js.LICENSE.txt",
-    "static/media/logo.04e27276.svg": "/bmlt-api-explorer/static/media/logo.04e27276.svg"
+    "main.css": "/static/css/main.ce63fbf1.chunk.css",
+    "main.js": "/static/js/main.df88001f.chunk.js",
+    "main.js.map": "/static/js/main.df88001f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.26f34862.js",
+    "runtime-main.js.map": "/static/js/runtime-main.26f34862.js.map",
+    "static/js/2.2bc65bff.chunk.js": "/static/js/2.2bc65bff.chunk.js",
+    "static/js/2.2bc65bff.chunk.js.map": "/static/js/2.2bc65bff.chunk.js.map",
+    "static/js/3.e2c1b04a.chunk.js": "/static/js/3.e2c1b04a.chunk.js",
+    "static/js/3.e2c1b04a.chunk.js.map": "/static/js/3.e2c1b04a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.ce63fbf1.chunk.css.map": "/static/css/main.ce63fbf1.chunk.css.map",
+    "static/js/2.2bc65bff.chunk.js.LICENSE.txt": "/static/js/2.2bc65bff.chunk.js.LICENSE.txt",
+    "static/media/logo.04e27276.svg": "/static/media/logo.04e27276.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.486603e2.js",
+    "static/js/runtime-main.26f34862.js",
     "static/js/2.2bc65bff.chunk.js",
     "static/css/main.ce63fbf1.chunk.css",
     "static/js/main.df88001f.chunk.js"
