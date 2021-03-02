@@ -10,7 +10,7 @@ function DataResponse() {
   return (
     <div>
       <div className="form-group">
-        <h5>Response Request</h5>
+        <label>Response Request</label>
         <select className="form-control" onChange={selectDataResponse} >
           <option default>Direct Response URL</option>
         </select>

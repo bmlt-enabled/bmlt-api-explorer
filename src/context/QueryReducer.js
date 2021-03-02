@@ -51,6 +51,11 @@ export default (state, action) => {
         ...state,
         formatComparison: action.payload,
       }
+    case "SET_TEXT_SEARCH":
+      return {
+        ...state,
+        textSearch: action.payload,
+      }
 
       // case 'CURRENT_URL':
       //   case 'UPDATE_URL':

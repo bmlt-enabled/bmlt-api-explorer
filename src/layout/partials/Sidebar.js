@@ -19,7 +19,7 @@ function Sidebar(props) {
     </section>
     <section className="card interface-selectors">
       <div className="card-header">
-        <h3>Select Your Response</h3>
+        <h3>Additional Parameters</h3>
       </div>
       <div className="card-body"> 
       <TextSearch/>

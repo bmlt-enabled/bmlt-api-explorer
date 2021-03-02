@@ -15,6 +15,7 @@ function Footer() {
     dataQuery,
     formatComparison,
     htmlSimple,
+    textSearch,
   } = useContext(Querycontext);
 
   const {root_server_url} = useContext(Globalcontext);
@@ -42,11 +43,19 @@ function Footer() {
     } else {
     bodiesArr = bodiesArr.map(i => '&services=' + i);
   }
+
+  //Set Text Search 
+  let txtVal = ''
+  if (textSearch.length > 0) {
+    txtVal = '&SearchString=' + textSearch;
+  } else {
+    txtVal = '';
+  }
   
   //Set Final Query Arrya
   let joinArr = [...bodiesArr, ...daysArr, ...formatsArr].join('');
-  let queryArr = joinArr + formatComparison + htmlSimple;
-  // console.log(queryArr.join('&'))
+  let queryArr = joinArr + formatComparison + htmlSimple + txtVal;
+  queryArr = queryArr.replace(/\s/g, '%20');
   
   return (
     <div className="container footer-container">

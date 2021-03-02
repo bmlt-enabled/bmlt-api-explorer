@@ -16,7 +16,7 @@ function DataFormat() {
   }
   return (
     <div className="form-group my-3">
-      <h5>Returned Data Format</h5>
+      <label>Returned Data Format</label>
       <select className="form-control" id="returnedData" onChange={selectDataFormat}>
         <option value="csv"default>CSV</option>
         <option value="xml">XML</option>

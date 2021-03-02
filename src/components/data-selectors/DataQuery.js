@@ -9,7 +9,7 @@ function DataQuery() {
   return (
     <div>
       <div className="form-group">
-        <h5>Get Results From</h5>
+        <label>Get Results From</label>
         <select className="form-control" id="dataQueryResults" onChange={selectDataQuery}>
           <option value="?switcher=GetFormats" default>Meeting Search Results</option>
           {/* <option value="GetFormats">Get Formats</option>

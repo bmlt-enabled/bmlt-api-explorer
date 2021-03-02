@@ -12,6 +12,7 @@ const initialState = {
     dataQuery: '?switcher=GetSearchResults',
     formatComparison: '',
     htmlSimple: '',
+    textSearch: '',
 }
 
 // create context
@@ -101,6 +102,15 @@ export const QueryProvider = ({ children }) => {
       payload: payload,
     })
   }
+
+  // Text Search
+  function textSearchFunction(payload) {
+    dispatch({
+      type: 'SET_TEXT_SEARCH',
+      payload: payload,
+    })
+  }
+
   return(
     <Querycontext.Provider value={{
       excludedFormats: state.excludedFormats,
@@ -113,6 +123,7 @@ export const QueryProvider = ({ children }) => {
       htmlSimple: state.htmlSimple,
       dataQuery: state.dataQuery,
       formatComparison: state.formatComparison,
+      textSearch: state.textSearch,
       excludedFormatsFunction,
       includedFormatsFunction,
       excludedDaysFunction,
@@ -123,6 +134,7 @@ export const QueryProvider = ({ children }) => {
       htmlSimpleFunction,
       dataQueryFunction,
       setFormatComparison,
+      textSearchFunction,
     }}>
       {children}
     </Querycontext.Provider>

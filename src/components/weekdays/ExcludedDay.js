@@ -18,6 +18,7 @@ function ExcludedDay() {
   // pass included formats array to reducer every time it is changed
   useEffect(() => {
     excludedDaysFunction(days)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[days]);
 
   return (
