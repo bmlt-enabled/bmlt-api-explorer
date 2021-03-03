@@ -6,7 +6,7 @@ function ServerSelect() {
 
   // const {tomato, updateRootServerURL, setLoading, getServerDetails, getFormats, getServiceBodies} = useContext(Globalcontext)
   const {tomato, getStuff} = useContext(Globalcontext)
-
+  tomato.sort((a, b) => (a.name > b.name) ? 1 : -1)
 
   // const [serverName, setServerName] = useState()
 
