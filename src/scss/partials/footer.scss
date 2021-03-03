@@ -1,4 +1,6 @@
 .footer-container {
+  margin-bottom: $spacer*3;
+
   .query-string {
     @extend .text-center;
 
