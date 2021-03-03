@@ -15,4 +15,4 @@ npm start
 ```
 
 #### Current URL
-[https://bmlt-enabled.github.io/bmlt-api-explorer](https://bmlt-enabled.github.io/bmlt-api-explorer)
+[https://explorer.bmlt.app/](https://explorer.bmlt.app/)
