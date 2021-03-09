@@ -8,7 +8,7 @@ function Header() {
     <div className="container">
       <nav className="navbar navbar-light justify-content-between align-items-center d-flex">
         <figure className="navbar-brand mb-0">
-          <img className="w-100" src={logo} alt="bmlt api explorer logo"/>
+          <img width="300" src={logo} alt="bmlt api explorer logo"/>
         </figure>
         <ServerSelect />
       </nav>
