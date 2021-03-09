@@ -27,3 +27,25 @@ body {
   bottom: 0;
   z-index: 100;
 }
+
+.main-wrapper {
+  position: relative;
+}
+
+.query-container {
+  padding: $spacer $spacer*3;
+  position: sticky;
+  background-color: $white;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  .query-string {
+    @extend .text-center;
+
+    width: 100%;
+    display: block;
+    word-wrap: break-word;
+  }
+}

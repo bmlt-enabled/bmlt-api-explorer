@@ -4,31 +4,44 @@ import Sidebar from './partials/Sidebar'
 import QueryScreen from './partials/QueryScreen'
 import {Globalcontext} from '../context/GlobalContext'
 import { QueryProvider } from '../context/QueryContext'
-import Footer from './partials/Footer'
-
+import QueryButton from '../components/query-string/QueryButton';
 
 function Layout() {
 
-  const {isMatched} = useContext(Globalcontext)
+  const {isMatched, root_server_url} = useContext(Globalcontext)
 
     return (
       <QueryProvider>
         <Header />
-          <div className="container">
+          <>
             {isMatched === false ?
-            <h2 className="text-center">Please Select A Root Server</h2>
+            <div className="container">
+              <h2 className="text-center">Please Select A Root Server</h2>
+            </div>
             : 
-            <div className="row">
-              <div className="col-md-4">
-                <Sidebar />
-              </div>
-              <div className="col-md-8">
-                <QueryScreen />
-              </div>
+            <div className="main-wrapper">
+              {root_server_url !== null ?
+                <div className="query-container">
+                  <QueryButton />
+                </div>
+                :
+                <>
+                </>
+              }
+              <div className="container"> 
+                <div className="row">
+                  <div className="col-md-4">
+                    <Sidebar />
+                  </div>
+                  <div className="col-md-8">
+                    <QueryScreen />
+                  </div>
+                </div>
+                </div>
             </div>
             }
-          </div>
-        <Footer/>
+          </>
+        {/* <Footer/> */}
       </QueryProvider>
     )
   }
