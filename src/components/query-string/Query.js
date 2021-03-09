@@ -58,7 +58,7 @@ function Query() {
   queryArr = queryArr.replace(/\s/g, '%20');
   
   return (
-    <div className="container footer-container">
+      <div className="hmmm">
       {root_server_url !== null ?
       <>
       <h5 className="query-heading text-center">Your Query:</h5> 
@@ -68,7 +68,6 @@ function Query() {
       <>
       </>
     }
-      
     </div>
   )
 }
