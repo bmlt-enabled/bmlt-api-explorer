@@ -25,7 +25,7 @@ function ServerSelect() {
   return (
     <div className="rs-select">
      <div className="server-select form-group mb-0">
-        <select className="form-control" id="dataQueryResults" onChange={selectRootServer}>
+        <select className="form-control custom-select" id="dataQueryResults" onChange={selectRootServer}>
           <option>Please Select A Server</option>
           {tomato.map(info => (
             <option key={info.source_id} value={info.root_server_url}>{info.name}</option>

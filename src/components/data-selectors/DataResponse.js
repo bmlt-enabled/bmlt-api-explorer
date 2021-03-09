@@ -11,7 +11,7 @@ function DataResponse() {
     <div>
       <div className="form-group">
         <label>Response Request</label>
-        <select className="form-control" onChange={selectDataResponse} >
+        <select className="form-control custom-select" onChange={selectDataResponse} >
           <option default>Direct Response URL</option>
         </select>
       </div>

@@ -1,9 +1,8 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import {Querycontext} from '../../context/QueryContext'
 
 function DataFormat() {
   const {dataFormatFunction, htmlSimpleFunction} = useContext(Querycontext)
-  const [queryString, setQueryString] = useState('');
 
   function selectDataFormat(e) {
     if(e.target.value === "simple-block") {
@@ -17,7 +16,7 @@ function DataFormat() {
   return (
     <div className="form-group my-3">
       <label>Returned Data Format</label>
-      <select className="form-control" id="returnedData" onChange={selectDataFormat}>
+      <select className="form-control custom-select" id="returnedData" onChange={selectDataFormat}>
         <option value="csv"default>CSV</option>
         <option value="xml">XML</option>
         <option value="json">JSON</option>
@@ -30,5 +29,4 @@ function DataFormat() {
     </div>
   )
 }
-{/* <option value="simple">Simple HTML (Block Elements)</option>//&block_mode=1 */}
 export default DataFormat
