@@ -1,19 +1,20 @@
-import React, {createContext, useReducer} from 'react'
-import QueryReducer from './QueryReducer'
+import React, { createContext, useReducer } from "react";
+import QueryReducer from "./QueryReducer";
 
 const initialState = {
-    excludedFormats: [],
-    includedFormats: [],
-    includedDays: [],
-    excludedDays: [],
-    includedBodies: [],
-    excludedBodies: [],
-    dataFormat: 'csv',
-    dataQuery: '?switcher=GetSearchResults',
-    formatComparison: '',
-    htmlSimple: '',
-    textSearch: '',
-}
+  excludedFormats: [],
+  includedFormats: [],
+  includedDays: [],
+  excludedDays: [],
+  includedBodies: [],
+  excludedBodies: [],
+  dataFormat: "csv",
+  dataQuery: "?switcher=GetSearchResults",
+  formatComparison: "",
+  htmlSimple: "",
+  textSearch: "",
+  searchType: "",
+};
 
 // create context
 export const Querycontext = createContext(initialState);
@@ -23,10 +24,10 @@ export const QueryProvider = ({ children }) => {
 
   //Actions
 
-  //excluded Format 
+  //excluded Format
   function excludedFormatsFunction(payload) {
     dispatch({
-      type: 'SET_EXCLUDED_FORMATS',
+      type: "SET_EXCLUDED_FORMATS",
       payload: payload,
     });
   }
@@ -34,7 +35,7 @@ export const QueryProvider = ({ children }) => {
   //Included Format
   function includedFormatsFunction(payload) {
     dispatch({
-      type: 'SET_INCLUDED_FORMATS',
+      type: "SET_INCLUDED_FORMATS",
       payload: payload,
     });
   }
@@ -42,7 +43,7 @@ export const QueryProvider = ({ children }) => {
   //Excluded Days
   function excludedDaysFunction(payload) {
     dispatch({
-      type: 'SET_EXCLUDED_DAYS',
+      type: "SET_EXCLUDED_DAYS",
       payload: payload,
     });
   }
@@ -50,7 +51,7 @@ export const QueryProvider = ({ children }) => {
   // Included Days
   function includedDaysFunction(payload) {
     dispatch({
-      type: 'SET_INCLUDED_DAYS',
+      type: "SET_INCLUDED_DAYS",
       payload: payload,
     });
   }
@@ -58,7 +59,7 @@ export const QueryProvider = ({ children }) => {
   // Included Service Bodies
   function includedBodiesFunction(payload) {
     dispatch({
-      type: 'SET_INCLUDED_BODIES',
+      type: "SET_INCLUDED_BODIES",
       payload: payload,
     });
   }
@@ -66,7 +67,7 @@ export const QueryProvider = ({ children }) => {
   // Excluded Bodies
   function excludedBodiesFunction(payload) {
     dispatch({
-      type: 'SET_EXCLUDED_BODIES',
+      type: "SET_EXCLUDED_BODIES",
       payload: payload,
     });
   }
@@ -74,69 +75,80 @@ export const QueryProvider = ({ children }) => {
   // Data Format
   function dataFormatFunction(payload) {
     dispatch({
-      type: 'SET_DATA_FORMAT',
+      type: "SET_DATA_FORMAT",
       payload: payload,
-    })
+    });
   }
 
   // Data Format HTML SIMPLE
   function htmlSimpleFunction(payload) {
     dispatch({
-      type: 'SET_HTML_SIMPLE',
+      type: "SET_HTML_SIMPLE",
       payload: payload,
-    })
+    });
   }
 
   // Data Query
   function dataQueryFunction(payload) {
     dispatch({
-      type: 'SET_DATA_QUERY',
+      type: "SET_DATA_QUERY",
       payload: payload,
-    })
+    });
   }
 
   // Format Comparison Operator
   function setFormatComparison(payload) {
     dispatch({
-      type: 'SET_FORMAT_COMPARISON',
+      type: "SET_FORMAT_COMPARISON",
       payload: payload,
-    })
+    });
   }
 
   // Text Search
   function textSearchFunction(payload) {
     dispatch({
-      type: 'SET_TEXT_SEARCH',
+      type: "SET_TEXT_SEARCH",
       payload: payload,
-    })
+    });
   }
 
-  return(
-    <Querycontext.Provider value={{
-      excludedFormats: state.excludedFormats,
-      includedFormats: state.includedFormats,
-      excludedDays: state.excludedDays,
-      includedDays: state.includedDays,
-      excludedBodies: state.excludedBodies,
-      includedBodies: state.includedBodies,
-      dataFormat: state.dataFormat,
-      htmlSimple: state.htmlSimple,
-      dataQuery: state.dataQuery,
-      formatComparison: state.formatComparison,
-      textSearch: state.textSearch,
-      excludedFormatsFunction,
-      includedFormatsFunction,
-      excludedDaysFunction,
-      includedDaysFunction,
-      excludedBodiesFunction,
-      includedBodiesFunction,
-      dataFormatFunction,
-      htmlSimpleFunction,
-      dataQueryFunction,
-      setFormatComparison,
-      textSearchFunction,
-    }}>
+  function searchTypeFunction(payload) {
+    dispatch({
+      type: "SET_SEARCH_TYPE",
+      payload: payload,
+    });
+  }
+
+  return (
+    <Querycontext.Provider
+      value={{
+        excludedFormats: state.excludedFormats,
+        includedFormats: state.includedFormats,
+        excludedDays: state.excludedDays,
+        includedDays: state.includedDays,
+        excludedBodies: state.excludedBodies,
+        includedBodies: state.includedBodies,
+        dataFormat: state.dataFormat,
+        htmlSimple: state.htmlSimple,
+        dataQuery: state.dataQuery,
+        formatComparison: state.formatComparison,
+        textSearch: state.textSearch,
+        searchType: state.searchType,
+        excludedFormatsFunction,
+        includedFormatsFunction,
+        excludedDaysFunction,
+        includedDaysFunction,
+        excludedBodiesFunction,
+        includedBodiesFunction,
+        dataFormatFunction,
+        htmlSimpleFunction,
+        dataQueryFunction,
+        setFormatComparison,
+        textSearchFunction,
+        searchTypeFunction,
+      }}
+    >
       {children}
     </Querycontext.Provider>
-  )
-}
+  );
+};
