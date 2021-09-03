@@ -14,6 +14,7 @@ const initialState = {
   htmlSimple: "",
   textSearch: "",
   searchType: "",
+  searchRadius: "",
 };
 
 // create context
@@ -119,6 +120,13 @@ export const QueryProvider = ({ children }) => {
     });
   }
 
+  function searchRadiusFunction(payload) {
+    dispatch({
+      type: "SET_SEARCH_RADIUS",
+      payload: payload,
+    });
+  }
+
   return (
     <Querycontext.Provider
       value={{
@@ -134,6 +142,7 @@ export const QueryProvider = ({ children }) => {
         formatComparison: state.formatComparison,
         textSearch: state.textSearch,
         searchType: state.searchType,
+        searchRadius: state.searchRadius,
         excludedFormatsFunction,
         includedFormatsFunction,
         excludedDaysFunction,
@@ -146,6 +155,7 @@ export const QueryProvider = ({ children }) => {
         setFormatComparison,
         textSearchFunction,
         searchTypeFunction,
+        searchRadiusFunction,
       }}
     >
       {children}

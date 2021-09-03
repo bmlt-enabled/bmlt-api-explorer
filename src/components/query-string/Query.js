@@ -16,6 +16,7 @@ function Query() {
     htmlSimple,
     textSearch,
     searchType,
+    searchRadius,
   } = useContext(Querycontext);
 
   const { root_server_url } = useContext(Globalcontext);
@@ -68,10 +69,16 @@ function Query() {
       tempSearchString = "";
   }
 
-  //Set Final Query Arrya
+  //Set Search Radius
+  let tempSearchRadius = "";
+  if (searchType === "3" && searchRadius) {
+    tempSearchRadius = `&SearchStringRadius=${searchRadius}`;
+  }
+
+  //Set Final Query Array
   let joinArr = [...bodiesArr, ...daysArr, ...formatsArr].join("");
   if (txtVal.length > 0) {
-    txtVal += tempSearchString;
+    txtVal += tempSearchString + tempSearchRadius;
   }
   let queryArr = joinArr + formatComparison + htmlSimple + txtVal;
   queryArr = queryArr.replace(/\s/g, "%20");

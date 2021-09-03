@@ -61,6 +61,11 @@ export default (state, action) => {
         ...state,
         searchType: action.payload,
       };
+    case "SET_SEARCH_RADIUS":
+      return {
+        ...state,
+        searchRadius: action.payload,
+      };
     // case 'CURRENT_URL':
     //   case 'UPDATE_URL':
     // return {
