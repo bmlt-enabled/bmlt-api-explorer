@@ -71,6 +71,11 @@ export default (state, action) => {
                 ...state,
                 startEndTime: action.payload,
             }
+        case 'SET_MEETING_DURATION':
+            return {
+                ...state,
+                meetingDuration: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

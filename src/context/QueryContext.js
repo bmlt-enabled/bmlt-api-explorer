@@ -16,6 +16,7 @@ const initialState = {
     searchType: '',
     searchRadius: '',
     startEndTime: '',
+    meetingDuration: '',
 }
 
 // create context
@@ -135,6 +136,13 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function meetingDurationFunction(payload) {
+        dispatch({
+            type: 'SET_MEETING_DURATION',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -152,6 +160,7 @@ export const QueryProvider = ({ children }) => {
                 searchType: state.searchType,
                 searchRadius: state.searchRadius,
                 startEndTime: state.startEndTime,
+                meetingDuration: state.meetingDuration,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -166,6 +175,7 @@ export const QueryProvider = ({ children }) => {
                 searchTypeFunction,
                 searchRadiusFunction,
                 startEndTimeFunction,
+                meetingDurationFunction,
             }}
         >
             {children}

@@ -4,6 +4,7 @@ import DataQuery from "../../components/data-selectors/DataQuery";
 import DataResponse from "../../components/data-selectors/DataResponse";
 import TextSearch from "../../components/text-search/TextSearch";
 import StartOrEndTime from "../../components/text-search/StartOrEndTime";
+import MeetingDuration from "../../components/text-search/MeetingDuration";
 
 function Sidebar(props) {
   return (
@@ -33,6 +34,14 @@ function Sidebar(props) {
         <div className="card-body">
           <StartOrEndTime />
         </div>
+      </section>
+      <section className="card interface-selectors">
+          <div className="card-header">
+              <h3>Meeting Duration</h3>
+          </div>
+          <div className="card-body">
+              <MeetingDuration />
+          </div>
       </section>
     </>
   );
