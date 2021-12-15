@@ -3,8 +3,8 @@ import DataFormat from "../../components/data-selectors/DataFormat";
 import DataQuery from "../../components/data-selectors/DataQuery";
 import DataResponse from "../../components/data-selectors/DataResponse";
 import TextSearch from "../../components/text-search/TextSearch";
-import StartOrEndTime from "../../components/text-search/StartOrEndTime";
-import MeetingDuration from "../../components/text-search/MeetingDuration";
+import StartOrEndTime from "../../components/time-and-duration/StartOrEndTime";
+import MeetingDuration from "../../components/time-and-duration/MeetingDuration";
 
 function Sidebar(props) {
   return (

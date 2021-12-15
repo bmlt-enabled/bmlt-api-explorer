@@ -19,6 +19,7 @@ function Query() {
         searchRadius,
         startEndTime,
         meetingDuration,
+        specificFields,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -84,7 +85,6 @@ function Query() {
     }
     let queryArr = joinArr + formatComparison + htmlSimple + txtVal
     queryArr = queryArr.replace(/\s/g, '%20')
-
     return (
         <div className="hmmm">
             {root_server_url !== null ? (
@@ -92,8 +92,8 @@ function Query() {
                     <h5 className="query-heading text-center">Your Query:</h5>
                     <a
                         className="query-string"
-                        href={`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}`}
-                    >{`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}`}</a>
+                        href={`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}${specificFields}`}
+                    >{`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}${specificFields}`}</a>
                 </>
             ) : (
                 <></>

@@ -2,7 +2,7 @@ import React, {createContext, useReducer} from 'react'
 import GlobalReducer from './GlobalReducer'
 import axios from 'axios'
 import jsonpAdapter from 'axios-jsonp'
-import {tomatoAPI, detailsAPI, formatsAPI, bodiesAPI} from '../api/switchers'
+import {tomatoAPI, detailsAPI, formatsAPI, bodiesAPI, fieldsAPI} from '../api/switchers'
 
 
 const initialState = {
@@ -12,6 +12,7 @@ const initialState = {
     isMatched: false,
     serverDetails: null,
     formats: null,
+    fields: null,
     serviceBodies: null,
 }
 
@@ -38,6 +39,15 @@ export const TomatoProvider = ({ children }) => {
     dispatch({
       type: 'SET_LOADING',
       payload: true,
+    })
+    axios({
+      url: payload + fieldsAPI,
+      adapter: jsonpAdapter
+    }).then((res) => {
+      dispatch({
+        type: 'GET_FIELDS',
+        payload: res.data
+      })
     })
     // server details
     axios({
@@ -226,6 +236,7 @@ export const TomatoProvider = ({ children }) => {
       isMatched: state.isMatched,
       formats: state.formats,
       serviceBodies: state.serviceBodies,
+      fields: state.fields,
       getStuff,
       updateRootServerURL,
       setLoading,
