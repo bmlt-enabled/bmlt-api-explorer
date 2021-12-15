@@ -5,7 +5,6 @@ import DataResponse from "../../components/data-selectors/DataResponse";
 import TextSearch from "../../components/text-search/TextSearch";
 import StartOrEndTime from "../../components/time-and-duration/StartOrEndTime";
 import MeetingDuration from "../../components/time-and-duration/MeetingDuration";
-import SpecificFields from "../../components/specific-fields/SpecificFields";
 
 function Sidebar(props) {
   return (
@@ -42,14 +41,6 @@ function Sidebar(props) {
           </div>
           <div className="card-body">
               <MeetingDuration />
-          </div>
-      </section>
-      <section className="card interface-selectors">
-          <div className="card-header">
-              <h3>Return Only Specific Fields</h3>
-          </div>
-          <div className="card-body">
-              <SpecificFields />
           </div>
       </section>
     </>

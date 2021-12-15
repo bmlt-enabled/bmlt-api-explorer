@@ -5,6 +5,7 @@ import IncludedDay from '../../components/weekdays/IncludedDay'
 import ExcludedDay from '../../components/weekdays/ExcludedDay'
 import IncludedServiceBody from '../../components/service-bodies/IncludedServiceBody'
 import ExcludedServiceBody from '../../components/service-bodies/ExcludedServiceBody'
+import SpecificFields from '../../components/specific-fields/SpecificFields'
 
 function QueryScreen() {
   return (
@@ -15,6 +16,7 @@ function QueryScreen() {
       <ExcludedFormats/>
       <IncludedServiceBody />
       <ExcludedServiceBody />
+      <SpecificFields />
     </>
   )
 }

@@ -17,6 +17,7 @@ const initialState = {
     searchRadius: '',
     startEndTime: '',
     meetingDuration: '',
+    specificFields: '',
 }
 
 // create context
@@ -143,6 +144,13 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function specificFieldsFunction(payload) {
+        dispatch({
+            type: 'SET_SPECIFIC_FIELDS',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -161,6 +169,7 @@ export const QueryProvider = ({ children }) => {
                 searchRadius: state.searchRadius,
                 startEndTime: state.startEndTime,
                 meetingDuration: state.meetingDuration,
+                specificFields: state.specificFields,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -176,6 +185,7 @@ export const QueryProvider = ({ children }) => {
                 searchRadiusFunction,
                 startEndTimeFunction,
                 meetingDurationFunction,
+                specificFieldsFunction
             }}
         >
             {children}
