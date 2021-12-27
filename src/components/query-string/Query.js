@@ -20,6 +20,9 @@ function Query() {
         startEndTime,
         meetingDuration,
         specificFields,
+        sortResponse,
+        includedVenueTypes,
+        excludedVenueTypes,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -92,8 +95,8 @@ function Query() {
                     <h5 className="query-heading text-center">Your Query:</h5>
                     <a
                         className="query-string"
-                        href={`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}${specificFields}`}
-                    >{`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}${specificFields}`}</a>
+                        href={`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}${specificFields}${sortResponse}${includedVenueTypes}${excludedVenueTypes}`}
+                    >{`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}${specificFields}${sortResponse}${includedVenueTypes}${excludedVenueTypes}`}</a>
                 </>
             ) : (
                 <></>

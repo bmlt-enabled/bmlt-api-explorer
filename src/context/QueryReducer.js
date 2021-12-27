@@ -81,6 +81,21 @@ export default (state, action) => {
                 ...state,
                 specificFields: action.payload,
             }
+        case 'SET_SORT_RESPONSE':
+            return {
+                ...state,
+                sortResponse: action.payload,
+            }
+        case 'SET_INCLUDED_VENUE_TYPES':
+            return {
+                ...state,
+                includedVenueTypes: action.payload,
+            }
+        case 'SET_EXCLUDED_VENUE_TYPES':
+            return {
+                ...state,
+                excludedVenueTypes: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

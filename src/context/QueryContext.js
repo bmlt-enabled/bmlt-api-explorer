@@ -18,6 +18,9 @@ const initialState = {
     startEndTime: '',
     meetingDuration: '',
     specificFields: '',
+    sortResponse: '',
+    includedVenueTypes: '',
+    excludedVenueTypes: '',
 }
 
 // create context
@@ -151,6 +154,27 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function sortResponseFunction(payload) {
+        dispatch({
+            type: 'SET_SORT_RESPONSE',
+            payload: payload,
+        })
+    }
+
+    function includedVenueTypesFunction(payload) {
+        dispatch({
+            type: 'SET_INCLUDED_VENUE_TYPES',
+            payload: payload,
+        })
+    }
+
+    function excludedVenueTypesFunction(payload) {
+        dispatch({
+            type: 'SET_EXCLUDED_VENUE_TYPES',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -170,6 +194,9 @@ export const QueryProvider = ({ children }) => {
                 startEndTime: state.startEndTime,
                 meetingDuration: state.meetingDuration,
                 specificFields: state.specificFields,
+                sortResponse: state.sortResponse,
+                includedVenueTypes: state.includedVenueTypes,
+                excludedVenueTypes: state.excludedVenueTypes,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -185,7 +212,10 @@ export const QueryProvider = ({ children }) => {
                 searchRadiusFunction,
                 startEndTimeFunction,
                 meetingDurationFunction,
-                specificFieldsFunction
+                specificFieldsFunction,
+                sortResponseFunction,
+                includedVenueTypesFunction,
+                excludedVenueTypesFunction,
             }}
         >
             {children}
