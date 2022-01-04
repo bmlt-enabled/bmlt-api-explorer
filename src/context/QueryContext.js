@@ -21,6 +21,7 @@ const initialState = {
     sortResponse: '',
     includedVenueTypes: '',
     excludedVenueTypes: '',
+    selectedResponse: 0,
 }
 
 // create context
@@ -175,6 +176,13 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function selectedResponseFunction(payload) {
+        dispatch({
+            type: 'SET_SELECTED_RESPONSE',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -197,6 +205,7 @@ export const QueryProvider = ({ children }) => {
                 sortResponse: state.sortResponse,
                 includedVenueTypes: state.includedVenueTypes,
                 excludedVenueTypes: state.excludedVenueTypes,
+                selectedResponse: state.selectedResponse,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -216,6 +225,7 @@ export const QueryProvider = ({ children }) => {
                 sortResponseFunction,
                 includedVenueTypesFunction,
                 excludedVenueTypesFunction,
+                selectedResponseFunction,
             }}
         >
             {children}

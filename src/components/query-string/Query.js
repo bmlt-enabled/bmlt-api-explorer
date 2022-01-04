@@ -23,6 +23,7 @@ function Query() {
         sortResponse,
         includedVenueTypes,
         excludedVenueTypes,
+        selectedResponse,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -88,15 +89,32 @@ function Query() {
     }
     let queryArr = joinArr + formatComparison + htmlSimple + txtVal
     queryArr = queryArr.replace(/\s/g, '%20')
+
+    const finalSearchString = `${queryArr}
+                               ${startEndTime}
+                               ${meetingDuration}
+                               ${specificFields}
+                               ${sortResponse}
+                               ${includedVenueTypes}
+                               ${excludedVenueTypes}`
+
+    let queryString = ''
+    if (selectedResponse == 0) {
+        queryString = `${root_server_url}/client_interface/${dataFormat}/${dataQuery}${finalSearchString}`
+    } else if (selectedResponse == 1) {
+        queryString = `[[BMLT_SIMPLE(${dataQuery}${finalSearchString})]]`
+    } else {
+        queryString = `[[BMLT_TABLE(${finalSearchString})]]`
+    }
+
     return (
         <div className="hmmm">
             {root_server_url !== null ? (
                 <>
                     <h5 className="query-heading text-center">Your Query:</h5>
-                    <a
-                        className="query-string"
-                        href={`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}${specificFields}${sortResponse}${includedVenueTypes}${excludedVenueTypes}`}
-                    >{`${root_server_url}/client_interface/${dataFormat}/${dataQuery}${queryArr}${startEndTime}${meetingDuration}${specificFields}${sortResponse}${includedVenueTypes}${excludedVenueTypes}`}</a>
+                    <a className="query-string" href={queryString}>
+                        {queryString}
+                    </a>
                 </>
             ) : (
                 <></>

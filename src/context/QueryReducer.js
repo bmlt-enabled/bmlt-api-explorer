@@ -96,6 +96,12 @@ export default (state, action) => {
                 ...state,
                 excludedVenueTypes: action.payload,
             }
+
+        case 'SET_SELECTED_RESPONSE':
+            return {
+                ...state,
+                selectedResponse: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

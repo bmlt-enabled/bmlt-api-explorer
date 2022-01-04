@@ -9,9 +9,11 @@ import SortResponse from '../../components/sort-response/SortResponse'
 import IncludedVenueTypes from '../../components/venue-types/IncludedVenueTypes'
 import ExcludedVenueTypes from '../../components/venue-types/ExcludedVenueTypes'
 import { Globalcontext } from '../../context/GlobalContext'
+import { Querycontext } from '../../context/QueryContext'
 
 const Sidebar = (props) => {
     const { serverDetails } = useContext(Globalcontext)
+    const { selectedResponse } = useContext(Querycontext)
 
     const showVenueInfo = () => {
         // 2.16.4 and above will return true
@@ -34,7 +36,7 @@ const Sidebar = (props) => {
                 </div>
                 <div className="card-body">
                     <DataResponse />
-                    <DataFormat />
+                    {selectedResponse == 0 && <DataFormat />}
                     <DataQuery />
                 </div>
             </section>
@@ -66,7 +68,7 @@ const Sidebar = (props) => {
                 <div>
                     <section className="card interface-selectors">
                         <div className="card-header">
-                            <h3>Specific Venue Types to Include</h3>
+                            <h3>Venue Types to Include</h3>
                         </div>
                         <div className="card-body">
                             <IncludedVenueTypes />
@@ -74,7 +76,7 @@ const Sidebar = (props) => {
                     </section>
                     <section className="card interface-selectors">
                         <div className="card-header">
-                            <h3>Specific Venue Types to Exclude</h3>
+                            <h3>Venue Types to Exclude</h3>
                         </div>
                         <div className="card-body">
                             <ExcludedVenueTypes />
@@ -82,14 +84,16 @@ const Sidebar = (props) => {
                     </section>
                 </div>
             )}
-            <section className="card interface-selectors">
-                <div className="card-header">
-                    <h3>Sort Response</h3>
-                </div>
-                <div className="card-body">
-                    <SortResponse />
-                </div>
-            </section>
+            {selectedResponse != 2 && (
+                <section className="card interface-selectors">
+                    <div className="card-header">
+                        <h3>Sort Response</h3>
+                    </div>
+                    <div className="card-body">
+                        <SortResponse />
+                    </div>
+                </section>
+            )}
         </>
     )
 }
