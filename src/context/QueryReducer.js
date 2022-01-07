@@ -102,6 +102,12 @@ export default (state, action) => {
                 ...state,
                 selectedResponse: action.payload,
             }
+
+        case 'SET_SPECIFIC_TEXT':
+            return {
+                ...state,
+                specificText: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

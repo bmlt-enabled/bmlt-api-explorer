@@ -22,6 +22,7 @@ const initialState = {
     includedVenueTypes: '',
     excludedVenueTypes: '',
     selectedResponse: 0,
+    specificText: '',
 }
 
 // create context
@@ -183,6 +184,13 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function specificTextFunction(payload) {
+        dispatch({
+            type: 'SET_SPECIFIC_TEXT',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -206,6 +214,7 @@ export const QueryProvider = ({ children }) => {
                 includedVenueTypes: state.includedVenueTypes,
                 excludedVenueTypes: state.excludedVenueTypes,
                 selectedResponse: state.selectedResponse,
+                specificText: state.specificText,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -226,6 +235,7 @@ export const QueryProvider = ({ children }) => {
                 includedVenueTypesFunction,
                 excludedVenueTypesFunction,
                 selectedResponseFunction,
+                specificTextFunction,
             }}
         >
             {children}

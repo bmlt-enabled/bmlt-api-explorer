@@ -8,6 +8,7 @@ import MeetingDuration from '../../components/time-and-duration/MeetingDuration'
 import SortResponse from '../../components/sort-response/SortResponse'
 import IncludedVenueTypes from '../../components/venue-types/IncludedVenueTypes'
 import ExcludedVenueTypes from '../../components/venue-types/ExcludedVenueTypes'
+import SpecificValue from '../../components/specific-value/SpecificValue'
 import { Globalcontext } from '../../context/GlobalContext'
 import { Querycontext } from '../../context/QueryContext'
 
@@ -46,6 +47,14 @@ const Sidebar = (props) => {
                 </div>
                 <div className="card-body">
                     <TextSearch />
+                </div>
+            </section>
+            <section className="card interface-selectors">
+                <div className="card-header">
+                    <h3>Search for Specific Value</h3>
+                </div>
+                <div className="card-body">
+                    <SpecificValue />
                 </div>
             </section>
             <section className="card interface-selectors">

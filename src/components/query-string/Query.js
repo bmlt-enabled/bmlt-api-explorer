@@ -24,6 +24,7 @@ function Query() {
         includedVenueTypes,
         excludedVenueTypes,
         selectedResponse,
+        specificText,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -90,13 +91,7 @@ function Query() {
     let queryArr = joinArr + formatComparison + htmlSimple + txtVal
     queryArr = queryArr.replace(/\s/g, '%20')
 
-    const finalSearchString = `${queryArr}
-                               ${startEndTime}
-                               ${meetingDuration}
-                               ${specificFields}
-                               ${sortResponse}
-                               ${includedVenueTypes}
-                               ${excludedVenueTypes}`
+    const finalSearchString = `${queryArr}${startEndTime}${meetingDuration}${specificFields}${sortResponse}${includedVenueTypes}${excludedVenueTypes}${specificText}`
 
     let queryString = ''
     if (selectedResponse == 0) {
