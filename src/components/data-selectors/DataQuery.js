@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Querycontext } from '../../context/QueryContext'
+import { differentOptions, getDisplayOptions } from './helpers'
 
 const DataQuery = () => {
-    const selectDataQuery = (e) => {
-        console.log(e.target.value)
-    }
+    const { selectedResponse, dataQueryFunction } = useContext(Querycontext)
+    const displayOptions = getDisplayOptions(selectedResponse)
 
     return (
         <div>
@@ -12,14 +13,13 @@ const DataQuery = () => {
                 <select
                     className="form-control custom-select"
                     id="dataQueryResults"
-                    onChange={selectDataQuery}
+                    onChange={(e) => dataQueryFunction(e.target.value)}
                 >
-                    <option value="?switcher=GetFormats" default>
-                        Meeting Search Results
-                    </option>
-                    {/* <option value="GetFormats">Get Formats</option>
-          <option value="GetServiceBodies">Get Service Bodies</option>
-          <option value="GetServerInfo">Get Server Information</option> */}
+                    {displayOptions.map((option) => {
+                        return (
+                            <option value={option.value}>{option.title}</option>
+                        )
+                    })}
                 </select>
             </div>
         </div>
