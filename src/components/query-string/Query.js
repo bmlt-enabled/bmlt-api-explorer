@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Querycontext } from '../../context/QueryContext'
 import { Globalcontext } from '../../context/GlobalContext'
 
-function Query() {
+const Query = () => {
     const {
         excludedFormats,
         includedFormats,
@@ -25,6 +25,7 @@ function Query() {
         excludedVenueTypes,
         selectedResponse,
         specificText,
+        checkedBoxesString,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -91,7 +92,16 @@ function Query() {
     let queryArr = joinArr + formatComparison + htmlSimple + txtVal
     queryArr = queryArr.replace(/\s/g, '%20')
 
-    const finalSearchString = `${queryArr}${startEndTime}${meetingDuration}${specificFields}${sortResponse}${includedVenueTypes}${excludedVenueTypes}${specificText}`
+    const finalSearchString =
+        queryArr +
+        startEndTime +
+        meetingDuration +
+        specificFields +
+        sortResponse +
+        includedVenueTypes +
+        excludedVenueTypes +
+        specificText +
+        checkedBoxesString
 
     let queryString = ''
     if (selectedResponse == 0) {

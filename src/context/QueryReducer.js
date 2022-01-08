@@ -108,6 +108,12 @@ export default (state, action) => {
                 ...state,
                 specificText: action.payload,
             }
+
+        case 'SET_CHECKED_BOXES_STRING':
+            return {
+                ...state,
+                checkedBoxesString: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

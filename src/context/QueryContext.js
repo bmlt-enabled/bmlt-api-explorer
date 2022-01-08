@@ -23,6 +23,7 @@ const initialState = {
     excludedVenueTypes: '',
     selectedResponse: 0,
     specificText: '',
+    checkedBoxesString: '',
 }
 
 // create context
@@ -191,6 +192,13 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function checkedBoxesStringFunction(payload) {
+        dispatch({
+            type: 'SET_CHECKED_BOXES_STRING',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -215,6 +223,7 @@ export const QueryProvider = ({ children }) => {
                 excludedVenueTypes: state.excludedVenueTypes,
                 selectedResponse: state.selectedResponse,
                 specificText: state.specificText,
+                checkedBoxesString: state.checkedBoxesString,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -236,6 +245,7 @@ export const QueryProvider = ({ children }) => {
                 excludedVenueTypesFunction,
                 selectedResponseFunction,
                 specificTextFunction,
+                checkedBoxesStringFunction,
             }}
         >
             {children}
