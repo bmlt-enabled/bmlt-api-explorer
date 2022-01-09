@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Querycontext } from '../../context/QueryContext'
-import { differentOptions, getDisplayOptions } from './helpers'
+import { getDisplayOptions } from './helpers'
 
 const DataQuery = () => {
     const { selectedResponse, dataQueryFunction } = useContext(Querycontext)

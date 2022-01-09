@@ -1,14 +1,4 @@
-export const getDisplayOptions = (selectedResponse) => {
-    if (selectedResponse == 0) {
-        return differentOptions.slice(0)
-    } else if (selectedResponse == 1) {
-        return differentOptions.slice(0, 2)
-    } else {
-        return differentOptions.slice(0, 1)
-    }
-}
-
-export const differentOptions = [
+const differentOptions = [
     {
         title: 'Meeting Search Results',
         value: '?switcher=GetSearchResults',
@@ -42,3 +32,13 @@ export const differentOptions = [
         value: '?switcher=GetCoverageArea',
     },
 ]
+
+export const getDisplayOptions = (selectedResponse) => {
+    if (selectedResponse == 0) {
+        return differentOptions.slice(0)
+    } else if (selectedResponse == 1) {
+        return differentOptions.slice(0, 2)
+    } else {
+        return differentOptions.slice(0, 1)
+    }
+}
