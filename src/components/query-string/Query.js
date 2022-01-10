@@ -26,6 +26,7 @@ const Query = () => {
         selectedResponse,
         specificText,
         checkedBoxesString,
+        formatLanguage,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -101,13 +102,16 @@ const Query = () => {
         includedVenueTypes +
         excludedVenueTypes +
         specificText +
-        checkedBoxesString
+        checkedBoxesString +
+        formatLanguage
 
     let queryString = ''
     if (selectedResponse == 0) {
         queryString = `${root_server_url}/client_interface/${dataFormat}/${dataQuery}${finalSearchString}`
     } else if (selectedResponse == 1) {
-        queryString = `[[BMLT_SIMPLE(${dataQuery}${finalSearchString})]]`
+        queryString = `[[BMLT_SIMPLE(${dataQuery.substring(
+            1
+        )}${finalSearchString})]]`
     } else {
         queryString = `[[BMLT_TABLE(${finalSearchString})]]`
     }

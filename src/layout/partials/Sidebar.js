@@ -11,23 +11,14 @@ import ExcludedVenueTypes from '../../components/venue-types/ExcludedVenueTypes'
 import SpecificValue from '../../components/specific-value/SpecificValue'
 import { Globalcontext } from '../../context/GlobalContext'
 import { Querycontext } from '../../context/QueryContext'
+import { shouldHideSubsections } from '../../components/helpers'
+import { showVenueInfo } from './helpers'
 
 const Sidebar = (props) => {
     const { serverDetails } = useContext(Globalcontext)
-    const { selectedResponse } = useContext(Querycontext)
+    const { selectedResponse, dataQuery } = useContext(Querycontext)
 
-    const showVenueInfo = () => {
-        // 2.16.4 and above will return true
-        const version = serverDetails[0].version
-        const major = parseInt(version.split('.')[0])
-        const minor = parseInt(version.split('.')[1])
-        const patch = parseInt(version.split('.')[2])
-        if (major >= 2 && minor >= 16 && patch >= 4) {
-            return true
-        } else {
-            return false
-        }
-    }
+    const hideSubsections = shouldHideSubsections(selectedResponse, dataQuery)
 
     return (
         <>
@@ -41,67 +32,71 @@ const Sidebar = (props) => {
                     <DataQuery />
                 </div>
             </section>
-            <section className="card interface-selectors">
-                <div className="card-header">
-                    <h3>Search for Specific Text</h3>
-                </div>
-                <div className="card-body">
-                    <TextSearch />
-                </div>
-            </section>
-            <section className="card interface-selectors">
-                <div className="card-header">
-                    <h3>Search for Specific Value</h3>
-                </div>
-                <div className="card-body">
-                    <SpecificValue />
-                </div>
-            </section>
-            <section className="card interface-selectors">
-                <div className="card-header">
-                    <h3>Meeting Start or End Time</h3>
-                </div>
-                <div className="card-body">
-                    <StartOrEndTime />
-                </div>
-            </section>
-            <section className="card interface-selectors">
-                <div className="card-header">
-                    <h3>Meeting Duration</h3>
-                </div>
-                <div className="card-body">
-                    <MeetingDuration />
-                </div>
-            </section>
-            {showVenueInfo() && (
+            {!hideSubsections && (
                 <div>
                     <section className="card interface-selectors">
                         <div className="card-header">
-                            <h3>Venue Types to Include</h3>
+                            <h3>Search for Specific Text</h3>
                         </div>
                         <div className="card-body">
-                            <IncludedVenueTypes />
+                            <TextSearch />
                         </div>
                     </section>
                     <section className="card interface-selectors">
                         <div className="card-header">
-                            <h3>Venue Types to Exclude</h3>
+                            <h3>Search for Specific Value</h3>
                         </div>
                         <div className="card-body">
-                            <ExcludedVenueTypes />
+                            <SpecificValue />
                         </div>
                     </section>
+                    <section className="card interface-selectors">
+                        <div className="card-header">
+                            <h3>Meeting Start or End Time</h3>
+                        </div>
+                        <div className="card-body">
+                            <StartOrEndTime />
+                        </div>
+                    </section>
+                    <section className="card interface-selectors">
+                        <div className="card-header">
+                            <h3>Meeting Duration</h3>
+                        </div>
+                        <div className="card-body">
+                            <MeetingDuration />
+                        </div>
+                    </section>
+                    {showVenueInfo(serverDetails[0].version) && (
+                        <div>
+                            <section className="card interface-selectors">
+                                <div className="card-header">
+                                    <h3>Venue Types to Include</h3>
+                                </div>
+                                <div className="card-body">
+                                    <IncludedVenueTypes />
+                                </div>
+                            </section>
+                            <section className="card interface-selectors">
+                                <div className="card-header">
+                                    <h3>Venue Types to Exclude</h3>
+                                </div>
+                                <div className="card-body">
+                                    <ExcludedVenueTypes />
+                                </div>
+                            </section>
+                        </div>
+                    )}
+                    {selectedResponse != 2 && (
+                        <section className="card interface-selectors">
+                            <div className="card-header">
+                                <h3>Sort Response</h3>
+                            </div>
+                            <div className="card-body">
+                                <SortResponse />
+                            </div>
+                        </section>
+                    )}
                 </div>
-            )}
-            {selectedResponse != 2 && (
-                <section className="card interface-selectors">
-                    <div className="card-header">
-                        <h3>Sort Response</h3>
-                    </div>
-                    <div className="card-body">
-                        <SortResponse />
-                    </div>
-                </section>
             )}
         </>
     )

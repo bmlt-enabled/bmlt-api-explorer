@@ -7,24 +7,31 @@ import IncludedServiceBody from '../../components/service-bodies/IncludedService
 import ExcludedServiceBody from '../../components/service-bodies/ExcludedServiceBody'
 import SpecificFields from '../../components/specific-fields/SpecificFields'
 import { Querycontext } from '../../context/QueryContext'
+import { shouldHideSubsections } from '../../components/helpers'
 
 const QueryScreen = () => {
-    const { selectedResponse } = useContext(Querycontext)
+    const { selectedResponse, dataQuery } = useContext(Querycontext)
+
+    const hideSubsections = shouldHideSubsections(selectedResponse, dataQuery)
 
     return (
-        <>
-            {selectedResponse != 2 && (
+        <div>
+            {!hideSubsections && (
                 <div>
-                    <IncludedDay />
-                    <ExcludedDay />
+                    {selectedResponse != 2 && (
+                        <div>
+                            <IncludedDay />
+                            <ExcludedDay />
+                        </div>
+                    )}
+                    <IncludedFormats />
+                    <ExcludedFormats />
+                    <IncludedServiceBody />
+                    <ExcludedServiceBody />
+                    {selectedResponse == 0 && <SpecificFields />}
                 </div>
             )}
-            <IncludedFormats />
-            <ExcludedFormats />
-            <IncludedServiceBody />
-            <ExcludedServiceBody />
-            {selectedResponse == 0 && <SpecificFields />}
-        </>
+        </div>
     )
 }
 

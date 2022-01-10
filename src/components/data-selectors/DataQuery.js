@@ -17,7 +17,9 @@ const DataQuery = () => {
                 >
                     {displayOptions.map((option) => {
                         return (
-                            <option value={option.value}>{option.title}</option>
+                            <option value={option.value} key={option.value}>
+                                {option.title}
+                            </option>
                         )
                     })}
                 </select>

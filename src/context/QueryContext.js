@@ -24,6 +24,7 @@ const initialState = {
     selectedResponse: 0,
     specificText: '',
     checkedBoxesString: '',
+    formatLanguage: '',
 }
 
 // create context
@@ -199,6 +200,13 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function formatLanguageFunction(payload) {
+        dispatch({
+            type: 'SET_FORMAT_LANGUAGE',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -224,6 +232,7 @@ export const QueryProvider = ({ children }) => {
                 selectedResponse: state.selectedResponse,
                 specificText: state.specificText,
                 checkedBoxesString: state.checkedBoxesString,
+                formatLanguage: state.formatLanguage,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -246,6 +255,7 @@ export const QueryProvider = ({ children }) => {
                 selectedResponseFunction,
                 specificTextFunction,
                 checkedBoxesStringFunction,
+                formatLanguageFunction,
             }}
         >
             {children}

@@ -1,11 +1,21 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Querycontext } from '../../context/QueryContext'
+import { Globalcontext } from '../../context/GlobalContext'
+import { shouldHideSubsections } from '../helpers'
+import { languageMapping } from './helpers'
 
 const DataResponse = () => {
-    const { selectedResponseFunction, checkedBoxesStringFunction } =
-        useContext(Querycontext)
+    const {
+        selectedResponseFunction,
+        checkedBoxesStringFunction,
+        dataQuery,
+        formatLanguageFunction,
+    } = useContext(Querycontext)
+    const { serverDetails } = useContext(Globalcontext)
     const [currentSelection, setCurrentSelection] = useState('')
     const [checkedBoxes, setCheckedBoxes] = useState([])
+
+    const hideSubsections = shouldHideSubsections(currentSelection, dataQuery)
 
     const checkBox = (e) => {
         if (e.currentTarget.checked) {
@@ -68,16 +78,60 @@ const DataResponse = () => {
                                 Return results as block-mode HTML
                             </label>
                         </div>
-                        <div>
-                            <input
-                                type="checkbox"
-                                value="weekdayCheck"
-                                onChange={checkBox}
-                            />
-                            <label className="ml-2">
-                                Separate results by weekday
-                            </label>
-                        </div>
+                        {!hideSubsections ? (
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    value="weekdayCheck"
+                                    onChange={checkBox}
+                                />
+                                <label className="ml-2">
+                                    Separate results by weekday
+                                </label>
+                            </div>
+                        ) : (
+                            <div>
+                                <label>Format Language</label>
+                                <select
+                                    className="form-control custom-select"
+                                    onChange={(e) => {
+                                        formatLanguageFunction(
+                                            `&lang_enum=${e.target.value}`
+                                        )
+                                    }}
+                                >
+                                    <option
+                                        default
+                                        value={serverDetails[0].nativeLang}
+                                        key={serverDetails[0].nativeLang}
+                                    >
+                                        Server Language
+                                    </option>
+                                    {serverDetails[0].langs
+                                        .split(',')
+                                        .map((lang) => {
+                                            const langName = languageMapping
+                                                .filter((language) => {
+                                                    return (
+                                                        language.value === lang
+                                                    )
+                                                })
+                                                .map((language) => {
+                                                    if (language.name) {
+                                                        return language.name
+                                                    } else {
+                                                        return language.value
+                                                    }
+                                                })
+                                            return (
+                                                <option value={lang} key={lang}>
+                                                    {langName}
+                                                </option>
+                                            )
+                                        })}
+                                </select>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

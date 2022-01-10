@@ -114,6 +114,12 @@ export default (state, action) => {
                 ...state,
                 checkedBoxesString: action.payload,
             }
+
+        case 'SET_FORMAT_LANGUAGE':
+            return {
+                ...state,
+                formatLanguage: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

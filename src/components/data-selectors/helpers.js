@@ -42,3 +42,17 @@ export const getDisplayOptions = (selectedResponse) => {
         return differentOptions.slice(0, 1)
     }
 }
+
+export const languageMapping = [
+    { name: 'English', value: 'en' },
+    { name: 'Español', value: 'es' },
+    { name: 'Dansk', value: 'dk' },
+    { name: 'Deutsch', value: 'de' },
+    { name: 'فارسی', value: 'fa' },
+    { name: 'Français', value: 'fr' },
+    { name: 'Italiano', value: 'it' },
+    { name: 'Polskie', value: 'pl' },
+    { name: 'Português', value: 'pt' },
+    { name: 'Русский', value: 'ru' },
+    { name: 'Svenska', value: 'sv' },
+]
