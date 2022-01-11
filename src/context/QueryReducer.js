@@ -96,6 +96,30 @@ export default (state, action) => {
                 ...state,
                 excludedVenueTypes: action.payload,
             }
+
+        case 'SET_SELECTED_RESPONSE':
+            return {
+                ...state,
+                selectedResponse: action.payload,
+            }
+
+        case 'SET_SPECIFIC_TEXT':
+            return {
+                ...state,
+                specificText: action.payload,
+            }
+
+        case 'SET_CHECKED_BOXES_STRING':
+            return {
+                ...state,
+                checkedBoxesString: action.payload,
+            }
+
+        case 'SET_FORMAT_LANGUAGE':
+            return {
+                ...state,
+                formatLanguage: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

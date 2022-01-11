@@ -8,6 +8,7 @@ import {
     formatsAPI,
     bodiesAPI,
     fieldsAPI,
+    searchAPI,
 } from '../api/switchers'
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
     serverDetails: null,
     formats: null,
     fields: null,
+    search: null,
     serviceBodies: null,
 }
 
@@ -51,6 +53,15 @@ export const TomatoProvider = ({ children }) => {
         }).then((res) => {
             dispatch({
                 type: 'GET_FIELDS',
+                payload: res.data,
+            })
+        })
+        axios({
+            url: payload + searchAPI,
+            adapter: jsonpAdapter,
+        }).then((res) => {
+            dispatch({
+                type: 'GET_SEARCH',
                 payload: res.data,
             })
         })
@@ -247,6 +258,7 @@ export const TomatoProvider = ({ children }) => {
                 formats: state.formats,
                 serviceBodies: state.serviceBodies,
                 fields: state.fields,
+                search: state.search,
                 getStuff,
                 updateRootServerURL,
                 setLoading,

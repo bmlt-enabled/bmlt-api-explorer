@@ -21,6 +21,10 @@ const initialState = {
     sortResponse: '',
     includedVenueTypes: '',
     excludedVenueTypes: '',
+    selectedResponse: 0,
+    specificText: '',
+    checkedBoxesString: '',
+    formatLanguage: '',
 }
 
 // create context
@@ -175,6 +179,34 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function selectedResponseFunction(payload) {
+        dispatch({
+            type: 'SET_SELECTED_RESPONSE',
+            payload: payload,
+        })
+    }
+
+    function specificTextFunction(payload) {
+        dispatch({
+            type: 'SET_SPECIFIC_TEXT',
+            payload: payload,
+        })
+    }
+
+    function checkedBoxesStringFunction(payload) {
+        dispatch({
+            type: 'SET_CHECKED_BOXES_STRING',
+            payload: payload,
+        })
+    }
+
+    function formatLanguageFunction(payload) {
+        dispatch({
+            type: 'SET_FORMAT_LANGUAGE',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -197,6 +229,10 @@ export const QueryProvider = ({ children }) => {
                 sortResponse: state.sortResponse,
                 includedVenueTypes: state.includedVenueTypes,
                 excludedVenueTypes: state.excludedVenueTypes,
+                selectedResponse: state.selectedResponse,
+                specificText: state.specificText,
+                checkedBoxesString: state.checkedBoxesString,
+                formatLanguage: state.formatLanguage,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -216,6 +252,10 @@ export const QueryProvider = ({ children }) => {
                 sortResponseFunction,
                 includedVenueTypesFunction,
                 excludedVenueTypesFunction,
+                selectedResponseFunction,
+                specificTextFunction,
+                checkedBoxesStringFunction,
+                formatLanguageFunction,
             }}
         >
             {children}
