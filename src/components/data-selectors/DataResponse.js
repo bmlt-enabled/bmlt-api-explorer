@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Querycontext } from '../../context/QueryContext'
 import { Globalcontext } from '../../context/GlobalContext'
 import { shouldHideSubsections } from '../helpers'
-import { languageMapping } from './helpers'
+import { FormatLanguage } from './helpers'
 
 const DataResponse = () => {
     const {
@@ -66,6 +66,13 @@ const DataResponse = () => {
                     <option value={1}>[[BMLT_SIMPLE]] Shortcode</option>
                     <option value={2}>[[BMLT_TABLE]] Shortcode</option>
                 </select>
+                {currentSelection == 0 &&
+                    dataQuery === '?switcher=GetFormats' && (
+                        <FormatLanguage
+                            formatLanguageFunction={formatLanguageFunction}
+                            serverDetails={serverDetails}
+                        />
+                    )}
                 {currentSelection == 1 && (
                     <div>
                         <div>
@@ -90,47 +97,10 @@ const DataResponse = () => {
                                 </label>
                             </div>
                         ) : (
-                            <div>
-                                <label>Format Language</label>
-                                <select
-                                    className="form-control custom-select"
-                                    onChange={(e) => {
-                                        formatLanguageFunction(
-                                            `&lang_enum=${e.target.value}`
-                                        )
-                                    }}
-                                >
-                                    <option
-                                        default
-                                        value={serverDetails[0].nativeLang}
-                                        key={serverDetails[0].nativeLang}
-                                    >
-                                        Server Language
-                                    </option>
-                                    {serverDetails[0].langs
-                                        .split(',')
-                                        .map((lang) => {
-                                            const langName = languageMapping
-                                                .filter((language) => {
-                                                    return (
-                                                        language.value === lang
-                                                    )
-                                                })
-                                                .map((language) => {
-                                                    if (language.name) {
-                                                        return language.name
-                                                    } else {
-                                                        return language.value
-                                                    }
-                                                })
-                                            return (
-                                                <option value={lang} key={lang}>
-                                                    {langName}
-                                                </option>
-                                            )
-                                        })}
-                                </select>
-                            </div>
+                            <FormatLanguage
+                                formatLanguageFunction={formatLanguageFunction}
+                                serverDetails={serverDetails}
+                            />
                         )}
                     </div>
                 )}

@@ -120,6 +120,11 @@ export default (state, action) => {
                 ...state,
                 formatLanguage: action.payload,
             }
+        case 'SET_GET_CHANGES_QUERY':
+            return {
+                ...state,
+                getChangesQuery: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

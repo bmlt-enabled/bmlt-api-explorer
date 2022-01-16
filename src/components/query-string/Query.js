@@ -27,6 +27,7 @@ const Query = () => {
         specificText,
         checkedBoxesString,
         formatLanguage,
+        getChangesQuery,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -103,7 +104,8 @@ const Query = () => {
         excludedVenueTypes +
         specificText +
         checkedBoxesString +
-        formatLanguage
+        formatLanguage +
+        getChangesQuery
 
     let queryString = ''
     if (selectedResponse == 0) {
