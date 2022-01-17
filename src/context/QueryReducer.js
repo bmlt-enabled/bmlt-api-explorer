@@ -125,6 +125,11 @@ export default (state, action) => {
                 ...state,
                 getChangesQuery: action.payload,
             }
+        case 'SET_VALUE_LIST':
+            return {
+                ...state,
+                valueList: action.payload,
+            }
         // case 'CURRENT_URL':
         //   case 'UPDATE_URL':
         // return {

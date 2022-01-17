@@ -5,7 +5,8 @@ export const shouldHideSubsections = (currentSelection, dataQuery) => {
         (dataQuery === '?switcher=GetFormats' ||
             dataQuery === '?switcher=GetServiceBodies' ||
             dataQuery === '?switcher=GetChanges' ||
-            dataQuery === '?switcher=GetFieldKeys')
+            dataQuery === '?switcher=GetFieldKeys' ||
+            dataQuery === '?switcher=GetFieldValues')
     ) {
         hideSubsections = true
     }
