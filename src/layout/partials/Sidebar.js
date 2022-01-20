@@ -13,6 +13,8 @@ import { Globalcontext } from '../../context/GlobalContext'
 import { Querycontext } from '../../context/QueryContext'
 import { shouldHideSubsections } from '../../components/helpers'
 import { showVenueInfo } from './helpers'
+import GetChanges from '../../components/get-changes/GetChanges'
+import ValueList from '../../components/value-list/ValueList'
 
 const Sidebar = (props) => {
     const { serverDetails } = useContext(Globalcontext)
@@ -32,6 +34,26 @@ const Sidebar = (props) => {
                     <DataQuery />
                 </div>
             </section>
+            {dataQuery === '?switcher=GetChanges' && (
+                <section className="card interface-selectors">
+                    <div className="card-header">
+                        <h3>Changes</h3>
+                    </div>
+                    <div className="card-body">
+                        <GetChanges />
+                    </div>
+                </section>
+            )}
+            {dataQuery === '?switcher=GetFieldValues' && (
+                <section className="card interface-selectors">
+                    <div className="card-header">
+                        <h3>Get List of Values</h3>
+                    </div>
+                    <div className="card-body">
+                        <ValueList />
+                    </div>
+                </section>
+            )}
             {!hideSubsections && (
                 <div>
                     <section className="card interface-selectors">

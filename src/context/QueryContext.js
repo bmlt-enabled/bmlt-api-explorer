@@ -25,6 +25,8 @@ const initialState = {
     specificText: '',
     checkedBoxesString: '',
     formatLanguage: '',
+    getChangesQuery: '',
+    valueList: '',
 }
 
 // create context
@@ -207,6 +209,20 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function getChangesQueryFunction(payload) {
+        dispatch({
+            type: 'SET_GET_CHANGES_QUERY',
+            payload: payload,
+        })
+    }
+
+    function valueListFunction(payload) {
+        dispatch({
+            type: 'SET_VALUE_LIST',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -233,6 +249,8 @@ export const QueryProvider = ({ children }) => {
                 specificText: state.specificText,
                 checkedBoxesString: state.checkedBoxesString,
                 formatLanguage: state.formatLanguage,
+                getChangesQuery: state.getChangesQuery,
+                valueList: state.valueList,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -256,6 +274,8 @@ export const QueryProvider = ({ children }) => {
                 specificTextFunction,
                 checkedBoxesStringFunction,
                 formatLanguageFunction,
+                getChangesQueryFunction,
+                valueListFunction,
             }}
         >
             {children}
