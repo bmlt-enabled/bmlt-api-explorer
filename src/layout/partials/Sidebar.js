@@ -12,9 +12,10 @@ import SpecificValue from '../../components/specific-value/SpecificValue'
 import { Globalcontext } from '../../context/GlobalContext'
 import { Querycontext } from '../../context/QueryContext'
 import { shouldHideSubsections } from '../../components/helpers'
-import { showVenueInfo } from './helpers'
+import { showVenueInfo, SectionToShow } from './helpers'
 import GetChanges from '../../components/get-changes/GetChanges'
 import ValueList from '../../components/value-list/ValueList'
+import NawsDumpServiceBody from '../../components/naws-dump-service-body/NawsDumpServiceBody'
 
 const Sidebar = (props) => {
     const { serverDetails } = useContext(Globalcontext)
@@ -35,88 +36,55 @@ const Sidebar = (props) => {
                 </div>
             </section>
             {dataQuery === '?switcher=GetChanges' && (
-                <section className="card interface-selectors">
-                    <div className="card-header">
-                        <h3>Changes</h3>
-                    </div>
-                    <div className="card-body">
-                        <GetChanges />
-                    </div>
-                </section>
+                <SectionToShow component={<GetChanges />} name={'Changes'} />
             )}
             {dataQuery === '?switcher=GetFieldValues' && (
-                <section className="card interface-selectors">
-                    <div className="card-header">
-                        <h3>Get List of Values</h3>
-                    </div>
-                    <div className="card-body">
-                        <ValueList />
-                    </div>
-                </section>
+                <SectionToShow
+                    component={<ValueList />}
+                    name={'Get List of Values'}
+                />
+            )}
+            {dataQuery === '?switcher=GetNAWSDump' && (
+                <SectionToShow
+                    component={<NawsDumpServiceBody />}
+                    name={'Select Service Body'}
+                />
             )}
             {!hideSubsections && (
                 <div>
-                    <section className="card interface-selectors">
-                        <div className="card-header">
-                            <h3>Search for Specific Text</h3>
-                        </div>
-                        <div className="card-body">
-                            <TextSearch />
-                        </div>
-                    </section>
-                    <section className="card interface-selectors">
-                        <div className="card-header">
-                            <h3>Search for Specific Value</h3>
-                        </div>
-                        <div className="card-body">
-                            <SpecificValue />
-                        </div>
-                    </section>
-                    <section className="card interface-selectors">
-                        <div className="card-header">
-                            <h3>Meeting Start or End Time</h3>
-                        </div>
-                        <div className="card-body">
-                            <StartOrEndTime />
-                        </div>
-                    </section>
-                    <section className="card interface-selectors">
-                        <div className="card-header">
-                            <h3>Meeting Duration</h3>
-                        </div>
-                        <div className="card-body">
-                            <MeetingDuration />
-                        </div>
-                    </section>
+                    <SectionToShow
+                        component={<TextSearch />}
+                        name={'Search for Specific Text'}
+                    />
+                    <SectionToShow
+                        component={<SpecificValue />}
+                        name={'Search for Specific Value'}
+                    />
+                    <SectionToShow
+                        component={<StartOrEndTime />}
+                        name={'Meeting Start of End Time'}
+                    />
+                    <SectionToShow
+                        component={<MeetingDuration />}
+                        name={'Meeting Duration'}
+                    />
                     {showVenueInfo(serverDetails[0].version) && (
                         <div>
-                            <section className="card interface-selectors">
-                                <div className="card-header">
-                                    <h3>Venue Types to Include</h3>
-                                </div>
-                                <div className="card-body">
-                                    <IncludedVenueTypes />
-                                </div>
-                            </section>
-                            <section className="card interface-selectors">
-                                <div className="card-header">
-                                    <h3>Venue Types to Exclude</h3>
-                                </div>
-                                <div className="card-body">
-                                    <ExcludedVenueTypes />
-                                </div>
-                            </section>
+                            <SectionToShow
+                                component={<IncludedVenueTypes />}
+                                name={'Venue Types to Include'}
+                            />
+                            <SectionToShow
+                                component={<ExcludedVenueTypes />}
+                                name={'Venue Types to Exclude'}
+                            />
                         </div>
                     )}
                     {selectedResponse != 2 && (
-                        <section className="card interface-selectors">
-                            <div className="card-header">
-                                <h3>Sort Response</h3>
-                            </div>
-                            <div className="card-body">
-                                <SortResponse />
-                            </div>
-                        </section>
+                        <SectionToShow
+                            component={<SortResponse />}
+                            name={'Sort Response'}
+                        />
                     )}
                 </div>
             )}

@@ -29,6 +29,7 @@ const Query = () => {
         formatLanguage,
         getChangesQuery,
         valueList,
+        nawsServiceBody,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -107,7 +108,8 @@ const Query = () => {
         checkedBoxesString +
         formatLanguage +
         getChangesQuery +
-        valueList
+        valueList +
+        nawsServiceBody
 
     let queryString = ''
     if (selectedResponse == 0) {

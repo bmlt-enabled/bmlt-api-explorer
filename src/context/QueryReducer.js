@@ -130,13 +130,11 @@ export default (state, action) => {
                 ...state,
                 valueList: action.payload,
             }
-        // case 'CURRENT_URL':
-        //   case 'UPDATE_URL':
-        // return {
-        //   ...state,
-        //   root_server_url: action.payload,
-        //   isLoading: false,
-        // }
+        case 'SET_NAWS_SERVICE_BODY':
+            return {
+                ...state,
+                nawsServiceBody: action.payload,
+            }
         default:
             return state
     }
