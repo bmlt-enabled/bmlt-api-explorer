@@ -112,9 +112,9 @@ const Query = () => {
         nawsServiceBody
 
     let queryString = ''
-    if (selectedResponse == 0) {
+    if (selectedResponse === 0) {
         queryString = `${root_server_url}/client_interface/${dataFormat}/${dataQuery}${finalSearchString}`
-    } else if (selectedResponse == 1) {
+    } else if (selectedResponse === 1) {
         queryString = `[[BMLT_SIMPLE(${dataQuery.substring(
             1
         )}${finalSearchString})]]`

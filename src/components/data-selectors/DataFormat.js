@@ -1,8 +1,12 @@
 import React, { useContext } from 'react'
 import { Querycontext } from '../../context/QueryContext'
+import { getFormats } from './helpers'
 
 const DataFormat = () => {
-    const { dataFormatFunction, htmlSimpleFunction } = useContext(Querycontext)
+    const { dataFormatFunction, htmlSimpleFunction, dataQuery } =
+        useContext(Querycontext)
+
+    const formats = getFormats(dataQuery)
 
     const selectDataFormat = (e) => {
         if (e.target.value === 'simple-block') {
@@ -21,18 +25,13 @@ const DataFormat = () => {
                 id="returnedData"
                 onChange={selectDataFormat}
             >
-                <option value="csv" default>
-                    CSV
-                </option>
-                <option value="xml">XML</option>
-                <option value="json">JSON</option>
-                <option value="kml">KML</option>
-                <option value="gpx">GPX</option>
-                <option value="poi">POI CSV</option>
-                <option value="simple-block">
-                    Simple HTML (Block Elements)
-                </option>
-                <option value="simple">Simple HTML (Table)</option>
+                {formats.map((format) => {
+                    return (
+                        <option value={format.value} key={format.value}>
+                            {format.name}
+                        </option>
+                    )
+                })}
             </select>
         </div>
     )

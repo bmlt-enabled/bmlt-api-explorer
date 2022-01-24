@@ -18,7 +18,7 @@ const QueryScreen = () => {
         <div>
             {!hideSubsections && (
                 <div>
-                    {selectedResponse != 2 && (
+                    {selectedResponse !== 2 && (
                         <div>
                             <IncludedDay />
                             <ExcludedDay />
@@ -28,7 +28,7 @@ const QueryScreen = () => {
                     <ExcludedFormats />
                     <IncludedServiceBody />
                     <ExcludedServiceBody />
-                    {selectedResponse == 0 && <SpecificFields />}
+                    {selectedResponse === 0 && <SpecificFields />}
                 </div>
             )}
         </div>

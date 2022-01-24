@@ -3,7 +3,12 @@ import { Querycontext } from '../../context/QueryContext'
 import { getDisplayOptions } from './helpers'
 
 const DataQuery = () => {
-    const { selectedResponse, dataQueryFunction } = useContext(Querycontext)
+    const {
+        selectedResponse,
+        dataQueryFunction,
+        dataFormatFunction,
+        dataQuery,
+    } = useContext(Querycontext)
     const displayOptions = getDisplayOptions(selectedResponse)
 
     return (
@@ -13,7 +18,12 @@ const DataQuery = () => {
                 <select
                     className="form-control custom-select"
                     id="dataQueryResults"
-                    onChange={(e) => dataQueryFunction(e.target.value)}
+                    onChange={(e) => {
+                        if (e.target.value === '?switcher=GetNAWSDump') {
+                            dataFormatFunction('csv')
+                        }
+                        dataQueryFunction(e.target.value)
+                    }}
                 >
                     {displayOptions.map((option) => {
                         return (
@@ -24,6 +34,11 @@ const DataQuery = () => {
                     })}
                 </select>
             </div>
+            {(dataQuery === '?switcher=GetServiceBodies' ||
+                dataQuery === '?switcher=GetFieldKeys' ||
+                dataQuery === '?switcher=GetServerInfo') && (
+                <p className={'mb-0'}>No additional options</p>
+            )}
         </div>
     )
 }

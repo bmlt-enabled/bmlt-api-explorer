@@ -31,7 +31,7 @@ const Sidebar = (props) => {
                 </div>
                 <div className="card-body">
                     <DataResponse />
-                    {selectedResponse == 0 && <DataFormat />}
+                    {selectedResponse === 0 && <DataFormat />}
                     <DataQuery />
                 </div>
             </section>
