@@ -1,3 +1,5 @@
+import React from 'react'
+
 export const showVenueInfo = (version) => {
     // 2.16.4 and above will return true
     const major = parseInt(version.split('.')[0])
@@ -8,4 +10,15 @@ export const showVenueInfo = (version) => {
     } else {
         return false
     }
+}
+
+export const SectionToShow = ({ name, component }) => {
+    return (
+        <section className="card interface-selectors">
+            <div className="card-header">
+                <h3>{name}</h3>
+            </div>
+            <div className="card-body">{component}</div>
+        </section>
+    )
 }

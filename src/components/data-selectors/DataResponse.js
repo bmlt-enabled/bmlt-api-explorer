@@ -30,7 +30,7 @@ const DataResponse = () => {
 
     const selectDataResponse = (e) => {
         setCurrentSelection(e.target.value)
-        selectedResponseFunction(e.target.value)
+        selectedResponseFunction(parseInt(e.target.value))
     }
 
     useEffect(() => {

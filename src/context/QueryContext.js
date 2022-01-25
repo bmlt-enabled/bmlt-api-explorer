@@ -27,6 +27,7 @@ const initialState = {
     formatLanguage: '',
     getChangesQuery: '',
     valueList: '',
+    nawsServiceBody: '',
 }
 
 // create context
@@ -223,6 +224,13 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function nawsServiceBodyFunction(payload) {
+        dispatch({
+            type: 'SET_NAWS_SERVICE_BODY',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -251,6 +259,7 @@ export const QueryProvider = ({ children }) => {
                 formatLanguage: state.formatLanguage,
                 getChangesQuery: state.getChangesQuery,
                 valueList: state.valueList,
+                nawsServiceBody: state.nawsServiceBody,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -276,6 +285,7 @@ export const QueryProvider = ({ children }) => {
                 formatLanguageFunction,
                 getChangesQueryFunction,
                 valueListFunction,
+                nawsServiceBodyFunction,
             }}
         >
             {children}

@@ -29,6 +29,7 @@ const Query = () => {
         formatLanguage,
         getChangesQuery,
         valueList,
+        nawsServiceBody,
     } = useContext(Querycontext)
 
     const { root_server_url } = useContext(Globalcontext)
@@ -107,12 +108,13 @@ const Query = () => {
         checkedBoxesString +
         formatLanguage +
         getChangesQuery +
-        valueList
+        valueList +
+        nawsServiceBody
 
     let queryString = ''
-    if (selectedResponse == 0) {
+    if (selectedResponse === 0) {
         queryString = `${root_server_url}/client_interface/${dataFormat}/${dataQuery}${finalSearchString}`
-    } else if (selectedResponse == 1) {
+    } else if (selectedResponse === 1) {
         queryString = `[[BMLT_SIMPLE(${dataQuery.substring(
             1
         )}${finalSearchString})]]`

@@ -38,9 +38,9 @@ export const getDisplayOptions = (selectedResponse) => {
         },
     ]
 
-    if (selectedResponse == 0) {
+    if (selectedResponse === 0) {
         return differentOptions.slice(0)
-    } else if (selectedResponse == 1) {
+    } else if (selectedResponse === 1) {
         return differentOptions.slice(0, 2)
     } else {
         return differentOptions.slice(0, 1)
@@ -99,4 +99,46 @@ export const FormatLanguage = ({ formatLanguageFunction, serverDetails }) => {
             </select>
         </div>
     )
+}
+
+export const getFormats = (dataQuery) => {
+    let formats = [
+        {
+            name: 'CSV',
+            value: 'csv',
+        },
+        {
+            name: 'XML',
+            value: 'xml',
+        },
+        {
+            name: 'JSON',
+            value: 'json',
+        },
+        {
+            name: 'KML',
+            value: 'kml',
+        },
+        {
+            name: 'GPX',
+            value: 'gpx',
+        },
+        {
+            name: 'POI CSV',
+            value: 'poi',
+        },
+        {
+            name: 'Simple HTML (Block Elements)',
+            value: 'simple-block',
+        },
+        {
+            name: 'Simple HTML (Table)',
+            value: 'simple',
+        },
+    ]
+
+    if (dataQuery === '?switcher=GetNAWSDump') {
+        return formats.slice(0, 1)
+    }
+    return formats
 }
