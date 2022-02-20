@@ -3,12 +3,8 @@ import { Querycontext } from '../../context/QueryContext'
 import { getDisplayOptions } from './helpers'
 
 const DataQuery = () => {
-    const {
-        selectedResponse,
-        dataQueryFunction,
-        dataFormatFunction,
-        dataQuery,
-    } = useContext(Querycontext)
+    const { selectedResponse, dataQueryFunction, dataFormatFunction } =
+        useContext(Querycontext)
     const displayOptions = getDisplayOptions(selectedResponse)
 
     return (
@@ -34,11 +30,6 @@ const DataQuery = () => {
                     })}
                 </select>
             </div>
-            {(dataQuery === '?switcher=GetServiceBodies' ||
-                dataQuery === '?switcher=GetFieldKeys' ||
-                dataQuery === '?switcher=GetServerInfo') && (
-                <p className={'mb-0'}>No additional options</p>
-            )}
         </div>
     )
 }

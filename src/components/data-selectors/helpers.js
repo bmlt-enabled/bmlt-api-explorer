@@ -29,6 +29,14 @@ export const getDisplayOptions = (selectedResponse) => {
             value: '?switcher=GetNAWSDump',
         },
         {
+            title: 'Get XML Schema',
+            value: 'GetSearchResults.php',
+        },
+        {
+            title: 'Get Server Languages',
+            value: 'GetLangs.php',
+        },
+        {
             title: 'Server Information',
             value: '?switcher=GetServerInfo',
         },

@@ -28,6 +28,7 @@ const initialState = {
     getChangesQuery: '',
     valueList: '',
     nawsServiceBody: '',
+    XMLCheckBoxes: '',
 }
 
 // create context
@@ -231,6 +232,13 @@ export const QueryProvider = ({ children }) => {
         })
     }
 
+    function XMLCheckBoxesFunction(payload) {
+        dispatch({
+            type: 'SET_XML_CHECK_BOXES',
+            payload: payload,
+        })
+    }
+
     return (
         <Querycontext.Provider
             value={{
@@ -260,6 +268,7 @@ export const QueryProvider = ({ children }) => {
                 getChangesQuery: state.getChangesQuery,
                 valueList: state.valueList,
                 nawsServiceBody: state.nawsServiceBody,
+                XMLCheckBoxes: state.XMLCheckBoxes,
                 excludedFormatsFunction,
                 includedFormatsFunction,
                 excludedDaysFunction,
@@ -286,6 +295,7 @@ export const QueryProvider = ({ children }) => {
                 getChangesQueryFunction,
                 valueListFunction,
                 nawsServiceBodyFunction,
+                XMLCheckBoxesFunction,
             }}
         >
             {children}

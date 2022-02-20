@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import DataFormat from '../../components/data-selectors/DataFormat'
 import DataQuery from '../../components/data-selectors/DataQuery'
 import DataResponse from '../../components/data-selectors/DataResponse'
@@ -19,9 +19,22 @@ import NawsDumpServiceBody from '../../components/naws-dump-service-body/NawsDum
 
 const Sidebar = (props) => {
     const { serverDetails } = useContext(Globalcontext)
-    const { selectedResponse, dataQuery } = useContext(Querycontext)
+    const { selectedResponse, dataQuery, dataFormat } = useContext(Querycontext)
+
+    const [showXMLSection, setShowXMLSection] = useState(false)
 
     const hideSubsections = shouldHideSubsections(selectedResponse, dataQuery)
+
+    useEffect(() => {
+        if (
+            dataFormat === 'xml' &&
+            dataQuery === '?switcher=GetSearchResults'
+        ) {
+            setShowXMLSection(true)
+        } else {
+            setShowXMLSection(false)
+        }
+    }, [dataQuery, dataFormat])
 
     return (
         <>
@@ -31,8 +44,10 @@ const Sidebar = (props) => {
                 </div>
                 <div className="card-body">
                     <DataResponse />
-                    {selectedResponse === 0 && <DataFormat />}
                     <DataQuery />
+                    {selectedResponse === 0 && (
+                        <DataFormat showXMLSection={showXMLSection} />
+                    )}
                 </div>
             </section>
             {dataQuery === '?switcher=GetChanges' && (
