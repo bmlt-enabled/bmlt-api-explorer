@@ -47,7 +47,9 @@ export const getDisplayOptions = (selectedResponse) => {
     ]
 
     if (selectedResponse === 0) {
-        return differentOptions.slice(0)
+        return differentOptions
+            .slice(0, 7)
+            .concat(differentOptions.slice(9, 11))
     } else if (selectedResponse === 1) {
         return differentOptions.slice(0, 2)
     } else {
