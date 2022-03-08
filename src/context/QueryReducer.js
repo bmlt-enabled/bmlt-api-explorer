@@ -135,6 +135,11 @@ export default (state, action) => {
                 ...state,
                 nawsServiceBody: action.payload,
             }
+        case 'SET_XML_CHECK_BOXES':
+            return {
+                ...state,
+                XMLCheckBoxes: action.payload,
+            }
         default:
             return state
     }
