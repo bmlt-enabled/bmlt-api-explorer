@@ -3,7 +3,7 @@ import GlobalReducer from './GlobalReducer'
 import axios from 'axios'
 import jsonpAdapter from 'axios-jsonp'
 import {
-    tomatoAPI,
+    aggregatorAPI,
     detailsAPI,
     formatsAPI,
     bodiesAPI,
@@ -14,7 +14,7 @@ import {
 const initialState = {
     isLoading: true,
     root_server_url: null,
-    tomato: null,
+    aggregator: null,
     isMatched: false,
     serverDetails: null,
     formats: null,
@@ -26,7 +26,7 @@ const initialState = {
 // create context
 export const Globalcontext = createContext(initialState)
 
-export const TomatoProvider = ({ children }) => {
+export const AggregatorProvider = ({ children }) => {
     const [state, dispatch] = useReducer(GlobalReducer, initialState)
 
     //Actions
@@ -223,14 +223,14 @@ export const TomatoProvider = ({ children }) => {
     //   });
     // }
 
-    function setTomato() {
+    function setAggregator() {
         let path = window.location.pathname.split('/')
         let strippedPath = path.slice(0, path.length - 2).join('/')
 
         axios({
-            url: tomatoAPI,
+            url: aggregatorAPI,
         }).then((res) => {
-            // On initial load check to see if current url matches any tomato urls
+            // On initial load check to see if current url matches any aggregator urls
             if (res.data.length > 0) {
                 res.data.forEach((i) => {
                     if (i.root_server_url === strippedPath) {
@@ -241,7 +241,7 @@ export const TomatoProvider = ({ children }) => {
                 })
             }
             dispatch({
-                type: 'SET_TOMATO',
+                type: 'SET_AGGREGATOR',
                 payload: res.data,
             })
         })
@@ -252,7 +252,7 @@ export const TomatoProvider = ({ children }) => {
             value={{
                 isLoading: state.isLoading,
                 root_server_url: state.root_server_url,
-                tomato: state.tomato,
+                aggregator: state.aggregator,
                 serverDetails: state.serverDetails,
                 isMatched: state.isMatched,
                 formats: state.formats,
@@ -262,7 +262,7 @@ export const TomatoProvider = ({ children }) => {
                 getStuff,
                 updateRootServerURL,
                 setLoading,
-                setTomato,
+                setAggregator,
             }}
         >
             {children}

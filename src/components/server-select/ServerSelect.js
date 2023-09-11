@@ -4,8 +4,8 @@ import { Globalcontext } from '../../context/GlobalContext'
 import ServerDetails from './ServerDetails'
 
 const ServerSelect = () => {
-    const { tomato, getStuff } = useContext(Globalcontext)
-    tomato.sort((a, b) => (a.name > b.name ? 1 : -1))
+    const { aggregator, getStuff } = useContext(Globalcontext)
+    aggregator.sort((a, b) => (a.name > b.name ? 1 : -1))
 
     const selectRootServer = (e) => {
         getStuff(e.target.value)
@@ -20,7 +20,7 @@ const ServerSelect = () => {
                     onChange={selectRootServer}
                 >
                     <option>Please Select A Server</option>
-                    {tomato.map((info) => (
+                    {aggregator.map((info) => (
                         <option
                             key={info.source_id}
                             value={info.root_server_url}
@@ -29,10 +29,10 @@ const ServerSelect = () => {
                         </option>
                     ))}
                     <option
-                        key="tomato"
-                        value="https://tomato.bmltenabled.org/main_server"
+                        key="aggregator"
+                        value="https://aggregator.bmltenabled.org/main_server"
                     >
-                        Tomato
+                        Aggregator
                     </option>
                 </select>
             </div>
