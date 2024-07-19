@@ -21,7 +21,7 @@ const GetChanges = () => {
             }
         }
         getChangesQueryFunction(queryString)
-    }, [values])
+    }, [values, getChangesQueryFunction])
 
     return (
         <div>

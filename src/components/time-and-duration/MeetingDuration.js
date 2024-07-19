@@ -20,7 +20,7 @@ const MeetingDuration = () => {
             }
         }
         meetingDurationFunction(stringsConcated)
-    }, [allStrings])
+    }, [allStrings, meetingDurationFunction])
 
     return (
         <div className="form-group">

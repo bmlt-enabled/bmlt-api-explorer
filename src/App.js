@@ -8,12 +8,12 @@ import Layout from './layout/Layout'
 function App() {
   // const {isMatched} = useContext(Globalcontext)
   const {
-    setTomato,
+    setAggregator,
     isLoading,
   } = useContext(Globalcontext)
   
   useEffect(() => {
-    setTomato();
+    setAggregator();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 

@@ -50,7 +50,7 @@ const DataResponse = () => {
         }
 
         checkedBoxesStringFunction(blockModeString + weekdayCheckString)
-    }, [checkedBoxes])
+    }, [checkedBoxes, checkedBoxesStringFunction])
 
     return (
         <div>
@@ -66,14 +66,14 @@ const DataResponse = () => {
                     <option value={1}>[[BMLT_SIMPLE]] Shortcode</option>
                     <option value={2}>[[BMLT_TABLE]] Shortcode</option>
                 </select>
-                {currentSelection == 0 &&
+                {currentSelection === 0 &&
                     dataQuery === '?switcher=GetFormats' && (
                         <FormatLanguage
                             formatLanguageFunction={formatLanguageFunction}
                             serverDetails={serverDetails}
                         />
                     )}
-                {currentSelection == 1 && (
+                {currentSelection === 1 && (
                     <div>
                         <div>
                             <input

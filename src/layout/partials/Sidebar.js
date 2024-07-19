@@ -95,7 +95,7 @@ const Sidebar = (props) => {
                             />
                         </div>
                     )}
-                    {selectedResponse != 2 && (
+                    {selectedResponse !== 2 && (
                         <SectionToShow
                             component={<SortResponse />}
                             name={'Sort Response'}

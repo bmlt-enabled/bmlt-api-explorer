@@ -1,6 +1,6 @@
 export const formatsAPI = '/client_interface/jsonp/?switcher=GetFormats'
 export const bodiesAPI = '/client_interface/jsonp/?switcher=GetServiceBodies'
-export const aggregatorAPI = 'https://aggregator.bmltenabled.org/rest/v1/rootservers/'
+export const aggregatorAPI = 'https://aggregator.bmltenabled.org/main_server/api/v1/rootservers/'
 export const detailsAPI = '/client_interface/jsonp/?switcher=GetServerInfo'
 export const fieldsAPI = '/client_interface/jsonp/?switcher=GetFieldKeys'
 export const searchAPI = '/client_interface/jsonp/?switcher=GetSearchResults'

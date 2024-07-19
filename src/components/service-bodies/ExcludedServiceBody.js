@@ -23,7 +23,7 @@ const ExcludedServiceBody = () => {
 
     useEffect(() => {
         excludedBodiesFunction(checked)
-    }, [checked])
+    }, [checked, excludedBodiesFunction])
 
     const CheckTree = () => {
         return (

@@ -8,18 +8,20 @@ const SpecificValue = () => {
     const [currentValue, setCurrentValue] = useState('')
     const { specificTextFunction } = useContext(Querycontext)
 
-    let selectionArray = search
-        .filter((meeting) => {
-            const current = meeting[currentSelection.split('|')[1]]
-            if (current) {
-                return current.length > 0
-            }
-        })
-        .map((meeting) => {
-            return meeting[currentSelection.split('|')[1]]
-        })
+    let selectionArray = [];
 
-    selectionArray = [...new Set(selectionArray)].sort()
+    if (search && currentSelection) {
+        selectionArray = search
+            .filter((meeting) => {
+                const current = meeting[currentSelection.split('|')[1]];
+                return current && current.length > 0;
+            })
+            .map((meeting) => {
+                return meeting[currentSelection.split('|')[1]];
+            });
+
+        selectionArray = [...new Set(selectionArray)].sort();
+    }
 
     useEffect(() => {
         setCurrentValue('none')

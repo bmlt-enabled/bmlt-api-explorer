@@ -12,7 +12,7 @@ const NawsDumpServiceBody = () => {
         if (values.service_body_id.length > 0) {
             nawsServiceBodyFunction(`&sb_id=${values.service_body_id}`)
         }
-    }, [values])
+    }, [values, nawsServiceBodyFunction])
 
     return <ServiceBodySelect values={values} setValues={setValues} />
 }

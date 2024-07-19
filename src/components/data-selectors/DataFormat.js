@@ -57,7 +57,7 @@ const DataFormat = ({ showXMLSection }) => {
         }
 
         XMLCheckBoxesFunction(contextString)
-    }, [checkBox])
+    }, [checkBox, XMLCheckBoxesFunction])
 
     return (
         <div className="form-group my-3">

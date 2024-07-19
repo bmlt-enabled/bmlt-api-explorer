@@ -20,14 +20,14 @@ const ExcludedVenueTypes = () => {
     useEffect(() => {
         let searchString = ''
         if (selectedTypes.length > 0) {
-            selectedTypes.map((type) => {
-                type *= -1
-                if (selectedTypes.length == 1) {
-                    searchString = '&venue_types=' + type
+            selectedTypes.forEach((type, index) => {
+                type *= -1;
+                if (selectedTypes.length === 1) {
+                    searchString = '&venue_types=' + type;
                 } else {
-                    searchString += `&venue_types[]=${type}`
+                    searchString += `&venue_types[]=${type}`;
                 }
-            })
+            });
         } else {
             searchString = ''
         }

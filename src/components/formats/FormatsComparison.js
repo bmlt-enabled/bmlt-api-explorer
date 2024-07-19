@@ -23,7 +23,7 @@ function FormatsComparison(props) {
       setFormatComparison('')
       setchecked(false)
     }
-  }, [props.disabled])
+  }, [props.disabled, setFormatComparison])
   
 
   return (

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { detailsAPI } from '../../api/switchers'
 import { Globalcontext } from '../../context/GlobalContext'
 import ServerDetails from './ServerDetails'
 
@@ -22,8 +21,8 @@ const ServerSelect = () => {
                     <option>Please Select A Server</option>
                     {aggregator.map((info) => (
                         <option
-                            key={info.source_id}
-                            value={info.root_server_url}
+                            key={info.id}
+                            value={info.url}
                         >
                             {info.name}
                         </option>

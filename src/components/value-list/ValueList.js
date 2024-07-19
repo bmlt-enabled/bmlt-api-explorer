@@ -15,7 +15,7 @@ const ValueList = () => {
             searchString = ''
         }
         valueListFunction(searchString)
-    }, [currentSelection])
+    }, [currentSelection, valueListFunction])
 
     return (
         <div className="form-group">

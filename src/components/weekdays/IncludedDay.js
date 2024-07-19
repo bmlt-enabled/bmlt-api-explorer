@@ -17,7 +17,7 @@ const IncludedDay = () => {
     // pass included formats array to reducer every time it is changed
     useEffect(() => {
         includedDaysFunction(days)
-    }, [days])
+    }, [days, includedDaysFunction])
 
     return (
         <section className="card interface-selectors">

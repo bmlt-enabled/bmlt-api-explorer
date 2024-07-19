@@ -22,7 +22,7 @@ const StartOrEndTime = () => {
             }
         }
         startEndTimeFunction(stringsConcated)
-    }, [allStrings])
+    }, [allStrings, startEndTimeFunction])
 
     return (
         <div className="form-group">
